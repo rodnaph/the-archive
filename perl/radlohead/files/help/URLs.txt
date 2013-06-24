@@ -1,0 +1,5 @@
+<h2>urls</h2>
+
+URL stands for <b>U</b>nary <b>R</b>esource <b>L</b>ocator and is the standard addressing
+system used on the internet.  If you've never heard the term before, you have used urls.
+URLs like www.radiohead.com, or www.google.com, or www.hotswedishpussy.net, heh heh.

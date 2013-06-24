@@ -1,0 +1,90 @@
+#########################################################
+#########################################################
+##
+##  output.lib
+##
+#########################################################
+#########################################################
+
+use strict;
+
+#########################################################
+
+require(BASE . "lib/system.lib");
+require(BASE . "lib/output.lib");
+
+#########################################################
+#########################################################
+
+#########################################################
+##
+##  bookclub_menu(no_tr)
+##
+#########################################################
+
+sub bookclub_header {
+
+  my ($no_tr) = @_;
+
+  header( 'Bookclub', '','', 'Bookclub' );
+  top_menu({
+             "SECTION" => "bookclub/",
+             "ITEMS" => [
+                          ["main.pl","bookclub"],
+                          ["list_books.pl","list"],
+                          ["add_book.pl","add"],
+                          ["book_search.pl","search"],
+                          ["manage_books.pl","manage"]
+                        ],
+             "ALIGN" => "right"
+           }
+          );
+
+  open_tr() unless $no_tr;
+
+}
+
+#########################################################
+##
+##  draw_book(rh_book)
+##
+#########################################################
+
+sub draw_book {
+
+  my ($rh_book) = @_;
+
+  if ($rh_book->{'TITLE'}) {
+
+    my $color = getUserColor($rh_book->{'USERNAME'});
+    my $enc_name = URLEncode($rh_book->{'USERNAME'});
+    my $user = user_html($rh_book->{'USERNAME'});
+
+    my $available = "not" unless $rh_book->{'AVAILABLE'};
+
+    my $text = <<EOT;
+
+<p>
+<font size="+1">
+  <b>$rh_book->{'TITLE'}</b> -
+  <i>$rh_book->{'AUTHOR'}</i><br />
+</font>
+
+owned by $user
+
+( <a href="mailto:$rh_book->{'EMAIL'}">email</a> ) - <b>$available available</b>
+</p>
+
+EOT
+
+    print_text($text);
+
+  }
+
+}
+
+#########################################################
+
+1;
+
+#########################################################

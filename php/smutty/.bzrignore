@@ -1,0 +1,5 @@
+application/*
+htdocs/.htaccess
+library/smarty/cache
+nbproject
+

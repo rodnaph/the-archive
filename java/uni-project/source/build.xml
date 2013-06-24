@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+
+<project name="BeanBuilderTool" default="build">
+
+  <!-- setup properties -->
+  <property name="src" value="./builder" />
+  <property name="builddir" value="./build" />
+
+  <!-- description of the purpose of this file -->
+  <description>This file is used to build the whole Bean Builder Tool
+  project using Ant.</description>
+
+  <target name="build">
+
+    <!-- create the tstamp -->
+    <tstamp />
+
+    <!-- create the build directory -->
+    <mkdir dir="${builddir}" />
+
+    <!-- compile the class files -->
+    <javac srcdir="${src}" destdir="${builddir}" />
+
+    <!-- create the tstamp -->
+    <tstamp />
+
+    <!-- package into a jar -->
+    <jar jarfile="BeanBuilderTool-${DSTAMP}.jar" basedir="${builddir}" manifest="./manifest.mf" />
+
+  </target>
+
+</project>

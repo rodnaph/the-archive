@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+<meta name="when" content="Wed, 18 Apr 2007 22:57:57 +0900">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>Smutty_Smut (Smutty)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Smutty</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../smutty/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../smutty/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../smutty/smutty_smut.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+View: <a href="/code/viewClass/Smutty_Smut">Source Code</a>
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">Smutty.Smutty_Smut</div>
+
+<h1>Class Smutty_Smut</h1>
+
+<pre class="tree"><a href="../smutty/smutty_object.html">Smutty_Object</a><br>  |<br>  +--<strong>Smutty_Smut</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>Smutty_Smut</strong><br>extends <a href="../smutty/smutty_object.html">Smutty_Object</a>
+
+</p>
+
+<div class="comment" id="overview_description"><p>
+ this class is the command line "smut" utility. it implements
+ all the actions like creating models, controllers, etc...</p><p>/</p></div>
+
+<hr>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type">private  nothing</td>
+<td class="description"><p class="name"><a href="#createController()">createController</a>(String name)</p><p class="description">
+ creates a controller
+</p></td>
+</tr>
+<tr>
+<td class="type">private  nothing</td>
+<td class="description"><p class="name"><a href="#createModel()">createModel</a>(String name)</p><p class="description">
+ creates a model
+</p></td>
+</tr>
+<tr>
+<td class="type">private  nothing</td>
+<td class="description"><p class="name"><a href="#db()">db</a>(String cmd)</p><p class="description">
+ performs an action on the database
+</p></td>
+</tr>
+<tr>
+<td class="type"> nothing</td>
+<td class="description"><p class="name"><a href="#run()">run</a>(array argv)</p><p class="description">
+ this is the main entry point for running this
+ class from the command line
+</p></td>
+</tr>
+<tr>
+<td class="type">private  nothing</td>
+<td class="description"><p class="name"><a href="#runTest()">runTest</a>(String name)</p><p class="description">
+ runs a single test case
+</p></td>
+</tr>
+<tr>
+<td class="type">private  nothing</td>
+<td class="description"><p class="name"><a href="#setup()">setup</a>()</p><p class="description">
+ this action makes sure everything is set up for smutty
+</p></td>
+</tr>
+<tr>
+<td class="type">private  nothing</td>
+<td class="description"><p class="name"><a href="#usage()">usage</a>()</p><p class="description">
+ prints out a usage message for smut
+</p></td>
+</tr>
+<tr>
+<td class="type">private  nothing</td>
+<td class="description"><p class="name"><a href="#writeFile()">writeFile</a>(String path, String data)</p><p class="description">
+ writes the given data to the specified file
+</p></td>
+</tr>
+</table>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="createController()">createController</h3>
+<code class="signature">private  nothing <strong>createController</strong>(String name)</code>
+<div class="details">
+<p>
+ creates a controller
+</p><dl>
+<dt>Parameters:</dt>
+<dd>name - the name of the controller</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Smut#createController">Go to code</a><hr>
+
+<h3 id="createModel()">createModel</h3>
+<code class="signature">private  nothing <strong>createModel</strong>(String name)</code>
+<div class="details">
+<p>
+ creates a model
+</p><dl>
+<dt>Parameters:</dt>
+<dd>name - the name of the model to create</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Smut#createModel">Go to code</a><hr>
+
+<h3 id="db()">db</h3>
+<code class="signature">private  nothing <strong>db</strong>(String cmd)</code>
+<div class="details">
+<p>
+ performs an action on the database
+</p><dl>
+<dt>Parameters:</dt>
+<dd>cmd - action to perform</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Smut#db">Go to code</a><hr>
+
+<h3 id="run()">run</h3>
+<code class="signature">public  nothing <strong>run</strong>(array argv)</code>
+<div class="details">
+<p>
+ this is the main entry point for running this
+ class from the command line
+</p><dl>
+<dt>Parameters:</dt>
+<dd>argv - the command line arguments</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Smut#run">Go to code</a><hr>
+
+<h3 id="runTest()">runTest</h3>
+<code class="signature">private  nothing <strong>runTest</strong>(String name)</code>
+<div class="details">
+<p>
+ runs a single test case
+</p><dl>
+<dt>Parameters:</dt>
+<dd>name - the name of the test</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Smut#runTest">Go to code</a><hr>
+
+<h3 id="setup()">setup</h3>
+<code class="signature">private  nothing <strong>setup</strong>()</code>
+<div class="details">
+<p>
+ this action makes sure everything is set up for smutty
+</p></div>
+
+<a href="/code/viewClass/Smutty_Smut#setup">Go to code</a><hr>
+
+<h3 id="usage()">usage</h3>
+<code class="signature">private  nothing <strong>usage</strong>()</code>
+<div class="details">
+<p>
+ prints out a usage message for smut
+</p></div>
+
+<a href="/code/viewClass/Smutty_Smut#usage">Go to code</a><hr>
+
+<h3 id="writeFile()">writeFile</h3>
+<code class="signature">private  nothing <strong>writeFile</strong>(String path, String data)</code>
+<div class="details">
+<p>
+ writes the given data to the specified file
+</p><dl>
+<dt>Parameters:</dt>
+<dd>path - the path of the file</dd>
+<dd>data - the data to write</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Smut#writeFile">Go to code</a><hr>
+
+<div class="header">
+<h1>Smutty</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../smutty/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../smutty/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../smutty/smutty_smut.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+View: <a href="/code/viewClass/Smutty_Smut">Source Code</a>
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://phpdoctor.sourceforge.net/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

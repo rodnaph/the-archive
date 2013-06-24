@@ -1,0 +1,141 @@
+##########################################################
+##########################################################
+##
+##  profiles_search.lib
+##
+##########################################################
+##########################################################
+
+use strict;
+use CGI;
+
+##########################################################
+
+use constant INDEX_FILE => BASE . "files/profiles_index";
+use constant FILE_INDEX => BASE . "files/profiles_file_index";
+
+##########################################################
+
+my $q = new CGI;
+my (%files,%db,%matches);
+my $key_count = 0;
+my @keys;
+
+##########################################################
+##
+##  do_profiles_search() : (rh_matches,ra_keys)
+##  (main)
+##
+##########################################################
+
+sub  do_profiles_search {
+
+  retrieve_file_index();
+
+  dbmopen %db, INDEX_FILE, 0666;
+  do_search();
+  dbmclose %db;
+
+  process_results();
+
+  return (\%matches,\@keys);
+
+}
+
+##########################################################
+##
+##  process_results()
+##
+##########################################################
+
+sub process_results {
+
+  foreach my $key (keys %matches) {
+
+    $matches{$key} = 100 / ($key_count-1) * $matches{$key};
+
+  }
+
+}
+
+##########################################################
+##
+##  do_search()
+##
+##########################################################
+
+sub do_search {
+
+  my $keywords = $q->param("keywords");
+  $keywords =~ s/([a-z0-9]*)[ ]*/search_on_word($1)/egi;
+
+}
+
+##########################################################
+##
+##  search_on_word(word)
+##
+##########################################################
+
+sub search_on_word {
+
+  my ($word) = @_;
+  $word = uc($word);
+
+  push(@keys,$word);
+  $key_count++;
+
+  my @file_indexes = split(/:/,$db{$word});
+
+  foreach my $file_index (@file_indexes) {
+
+    my $file = get_file($file_index);
+    $file =~ s/\.nfo//i;
+
+    if (!defined($matches{$file})) {
+      $matches{$file} = "1";
+    } else {
+      $matches{$file}++;
+    }
+
+  }
+
+}
+
+##########################################################
+##
+##  get_file(file_index)
+##
+##########################################################
+
+sub get_file {
+
+  my ($file_index) = @_;
+
+  return $files{$file_index};
+
+}
+
+##########################################################
+##
+##  retrieve_file_index()
+##
+##########################################################
+
+sub retrieve_file_index {
+
+  dbmopen my %db, FILE_INDEX, 0666;
+  foreach my $key (keys %db) {
+
+    $files{$key} = $db{$key};
+
+  }
+  dbmclose %db;
+
+}
+
+##########################################################
+
+1;
+
+##########################################################

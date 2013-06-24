@@ -1,0 +1,9 @@
+
+# no NOT show directory indexes
+Options -Indexes
+
+# turn off magic quoting
+php_flag magic_quotes_gpc off
+php_flag magic_quotes_runtime off
+php_flag magic_quotes_sybase off
+

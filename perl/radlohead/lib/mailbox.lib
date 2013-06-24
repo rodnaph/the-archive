@@ -1,0 +1,310 @@
+##################################################
+##################################################
+##
+##  mailbox.lib
+##
+##################################################
+##################################################
+
+use strict;
+use FileHandle qw( print getline );
+
+##################################################
+
+require(BASE . "lib/encryption.lib");
+require(BASE . "lib/output.lib");
+
+##################################################
+##################################################
+
+#################################################
+##
+##  inboxMessages(username,password)
+##
+#################################################
+
+sub inboxMessages {
+
+  my ($username,$password) = @_;
+
+  ##
+  ##  TABLE HEADINGS
+  ##
+
+  my $html = <<EOT;
+<tr>
+  <td bgcolor="#FF0000"><i>from</i></td>
+  <td bgcolor="#FF0000"><i>subject</i></td>
+  <td align="right" bgcolor="#FF0000"><i>date sent</i></td>
+</tr>
+
+EOT
+
+  heading( "inbox" );
+  print_html( "<p>\n<table width=\"100%\" cellpadding=\"5\">" );
+  print_html( $html, 2 );
+
+  my $hasMail = 0;
+
+  my $fh_mail = new FileHandle( getMailbox( $username ) );
+  while( my $mail = $fh_mail->getline() ) {
+    if ($mail =~ /^$username:#:/i) {
+
+      $hasMail = 1;
+
+      ##
+      ##  GET DATA
+      ##
+
+      chomp( $mail );
+      my ( $to, $from, $subject, $message, $msgID, $read ) = split( /:#:/, $mail );
+
+      ##
+      ##  SET VARIABLES
+      ##
+
+      my $color = getUserColor( $from );
+      my $backColor = "  ";
+      if ( !$read ) {
+        $backColor = " bgcolor=\"#AAAAFF\" ";
+        if ($color eq "F00") { $color = "000"; }
+      }
+
+      my $viewString = "todo=view|username=" . encrypt($username) . "|password=" . encrypt($password) . "|msgID=$msgID|read=$read";
+      $msgID = gmtime( $msgID );
+      my $from_user = user_html( $from );
+
+      ##
+      ##  DRAW MESSAGE
+      ##
+
+      $html = <<EOT;
+<tr>
+  <td $backColor >
+    $from_user
+  </td>
+  <td $backColor>
+    <a href="10.pl?$viewString">
+      <b>$subject</b>
+    </a>
+  </td>
+  <td align="right" $backColor><b>$msgID</b></td>
+</tr>
+EOT
+
+    print_html( $html, 2 );
+
+    }
+  }
+  $fh_mail->close();
+
+  ##
+  ##  IF INBOX EMPTY
+  ##
+
+  if ( !$hasMail ) {
+    my $html = <<EOT;
+<tr>
+  <td colspan="3">
+    No Messages
+  </td>
+</tr>
+EOT
+
+    print_html( $html, 2 );
+
+  }
+
+  print_html( "</table></p>" );
+
+}
+
+#################################################
+##
+##  viewMessage(username,msgID,password,read)
+##
+#################################################
+
+sub viewMessage {
+
+  my ( $username, $msgID, $password, $read ) = @_;
+
+  my $fh_mail = new FileHandle( getMailbox( $username ) );
+
+  while( my $mail = $fh_mail->getline() ) {
+    if (($mail =~ /^$username:#:/i) && ($mail =~ /$msgID/)) {
+
+      ##
+      ##  GET/FORMAT DATA
+      ##
+
+      my ( $to, $from, $subject, $message ) = split( /:#:/, $mail );
+
+      my $date = gmtime( $msgID );
+      my $from_user = user_html( $from );
+      my $userString = "|username=" . encrypt($username) . "|password=$password|msgID=$msgID";
+
+      ##
+      ##  DRAW MESSAGE
+      ##
+
+      top_menu({
+                 "ITEMS" => [
+                              ["10.pl?todo=delete$userString","delete"],
+                              ["10.pl?todo=reply$userString","reply"],
+                              ["10.pl?todo=forward$userString","forward"]
+                            ],
+                 "ALIGN" => 'right'
+               });
+
+      open_tr();
+      my $text = <<EOT;
+
+<font size="+2"><b>"$subject"</b></font> from 
+  $from_user
+<br /><br />sent on <b>$date</b>
+
+<blockquote>
+$message
+</blockquote>
+
+EOT
+
+      print_text( $text );
+      last;
+    }
+  }
+  $fh_mail->close();
+
+  ##
+  ##  MARKING AS READ
+  ##  IF NEEDED
+  ##
+
+  if (!$read) {
+
+    {
+      my $fh_mail = new FileHandle(getMailbox($username));
+      my $fh_temp = new FileHandle(get_temp("viewMessage.tmp"),">");
+
+      while( my $mail = $fh_mail->getline() ) {
+        if (($mail =~ /^$username:#:/i) && ($mail =~ /$msgID/)) {
+
+          my ( $to, $from, $subject, $message, $msgID ) = split( /:#:/, $mail );
+          $fh_temp->print( "$to:#:$from:#:$subject:#:$message:#:$msgID:#:1\n" );
+
+        } else {
+          $fh_temp->print( $mail );
+        }
+      }
+
+    }
+
+    copy_file( get_temp("viewMessage.tmp"), getMailbox($username) );
+
+  }
+}
+
+#################################################
+##
+##  deleteMessage(username,msgID)
+##
+#################################################
+
+sub deleteMessage {
+
+  my ($username,$msgID) = @_;
+
+  {
+    my $fh_mail = new FileHandle(getMailbox($username));
+    my $fh_temp = new FileHandle(get_temp("deleteMessage.tmp"));
+
+    while( my $mail = $fh_mail->getline() ) {
+      if (!((/^$username:#:/i) && (/$msgID/))) {
+        $fh_temp->print( $mail );
+      }
+    }
+
+  }
+
+  copy_file(get_temp("deleteMessage.tmp"),getMailbox($username));
+
+}
+
+#################################################
+##
+##  sendMessage(to,from,subject,message)
+##
+#################################################
+
+sub sendMessage {
+
+  my ($to,$from,$subject,$message) = @_;
+
+  $message =~ s/\n/<br>/g;
+
+  my $fh_mail = new FileHandle(getMailbox($to),">>");
+  print $fh_mail getUsername($to) . ":#:" .
+                 getUsername($from) . ":#:" .
+                 "$subject:#:$message:#:" .
+                 time . ":#:" .
+                 "0\n";
+  $fh_mail->close();
+
+}
+
+##################################################
+##
+##  DRAWS THE MENU
+##
+##################################################
+
+sub mailboxMenu {
+
+  my $userString = "|username=" . encrypt($_[0]) . "|password=" . encrypt($_[1]);
+
+  top_menu({
+             "ITEMS" => [
+                          ["09.pl?todo=inbox$userString","inbox"],
+                          ["09.pl?todo=compose$userString","compose"],
+                          ["09.pl?todo=problems$userString","problems"]
+                        ]
+           });
+
+}
+
+##################################################
+##
+##  invalidUser()
+##
+##################################################
+
+sub invalidUser {
+
+  my $text = <<EOT;
+
+<p>Sorry, but you have attempted to perform an unauthorised action.  This could be
+because</p>
+
+<p><ul>
+<li>You entered an invalid username/password combination at login</li>
+<li>Your session data has become corrupted</li>
+</ul></p>
+
+<p>Either way, you will need to login again <a href="09.pl">here</a>.</p>
+
+EOT
+
+  open_tr();
+  heading("invalid user");
+  print_text($text);
+
+}
+
+#################################################
+##
+##  RETURN
+##
+##################################################
+
+1;

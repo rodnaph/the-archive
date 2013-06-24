@@ -1,0 +1,15 @@
+<h2>server problems</h2>
+
+<p>Hey, how's it going?  Well, some of the more regular visitor may have
+noticed that the site was down for a few days last week.  We have no idea
+exactly why this was, the server was just screwed for a bit, but as you
+can see it seems to be back now.</p>
+
+<p>We did have a server change in mind as the site was down, but now it is working
+again our plans have been put on the back burner.  We'll just have to see what
+happens.</p>
+
+<p>We've also been trying to put some changes into the code side of the side if
+your interested, chaning to xhtml.  Exciting stuff... ish...
+
+<p>Nuf for now.</p>

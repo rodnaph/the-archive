@@ -1,0 +1,53 @@
+/* Default.css */
+
+BODY {
+
+  background-color: #ffffff;
+
+  font-family: tahoma,arial,verdana;
+  font-size: 8pt;
+
+  color: #000000;
+
+}
+
+.MenuItem, A.TitleItem, TD.TitleBar {
+
+  font-family: arial;
+  font-size: 8pt;
+  font-weight: bold;
+
+  color: #555566;
+
+  text-decoration: none;
+
+}
+
+.MenuItem {
+
+  border: 1px #eeeeee solid;
+  width: 100%;
+  padding: 2px;
+
+}
+
+A.TitleItem:hover {
+
+  color: #ff6666;
+
+}
+
+.MenuItem:hover {
+
+  border: 1px #555566 solid;
+  background-color: #ffffff;
+
+}
+
+DIV.MenuBox {
+
+  border: 1px #000000 solid;
+  background-color: #eeeeee;
+
+}
+

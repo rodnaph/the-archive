@@ -1,0 +1,60 @@
+/* default.css */
+
+BODY {
+
+  background-color: #999999;
+
+}
+
+BODY, TD, P {
+
+  background-color: inherit;
+
+  font-family: arial, helvetica, verdana, serif;
+  font-size: 8pt;
+  color: #222244;
+
+}
+
+A {
+
+  background-color: inherit;
+
+  color: #222244;
+  text-decoration: none;
+
+}
+
+A:hover {
+
+  background-color: inherit;
+
+  color: #555577;
+
+}
+
+.heading {
+
+  background-color: inherit;
+
+  font-size: 13pt;
+  font-weight: bold;
+  color: #000000;
+
+}
+
+.smallheading {
+
+  background-color: inherit;
+
+  font-weight: bold;
+  color: #000000;
+
+}
+
+INPUT, TEXTAREA, SELECT {
+
+  background-color: #cccccc;
+  color: inherit;
+
+}

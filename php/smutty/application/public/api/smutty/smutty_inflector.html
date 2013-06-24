@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+<meta name="when" content="Wed, 18 Apr 2007 22:57:57 +0900">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>Smutty_Inflector (Smutty)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Smutty</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../smutty/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../smutty/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../smutty/smutty_inflector.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+View: <a href="/code/viewClass/Smutty_Inflector">Source Code</a>
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">Smutty.Smutty_Inflector</div>
+
+<h1>Class Smutty_Inflector</h1>
+
+<pre class="tree"><a href="../smutty/smutty_object.html">Smutty_Object</a><br>  |<br>  +--<strong>Smutty_Inflector</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>Smutty_Inflector</strong><br>extends <a href="../smutty/smutty_object.html">Smutty_Object</a>
+
+</p>
+
+<div class="comment" id="overview_description"><p>
+Inflector for pluralize and singularize English nouns.</p><p>This Inflector is a port of Ruby on Rails Inflector.</p><p>It can be really helpful for developers that want to
+create frameworks based on naming conventions rather than
+configurations.</p><p>It was ported to PHP for the Akelos Framework, a
+multilingual Ruby on Rails like framework for PHP that will
+be launched soon.</p><p>Modifications have been made for the Smutty Framework
+</p></div>
+
+<dl>
+<dt>Author:</dt>
+<dd>Bermi Ferrer Martinez <bermi akelos com></dd>
+<dt>Copyright:</dt>
+<dd>Copyright (c) 2002-2006, Akelos Media, S.L. http://www.akelos.org</dd>
+<dt>License:</dt>
+<dd>GNU Lesser General Public License <http://www.gnu.org/copyleft/lesser.html></dd>
+<dt>Since:</dt>
+<dd>0.1</dd>
+<dt>Version:</dt>
+<dd>$Revision 0.1 $</dd>
+</dl>
+<hr>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#camelize()">camelize</a>(string word)</p><p class="description">
+Returns given word as CamelCasedConverts a word like "send_email" to "SendEmail". </p></td>
+</tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#classify()">classify</a>(string table_name)</p><p class="description">
+Converts a table name to its class name according to rails
+naming conventions.
+</p></td>
+</tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#humanize()">humanize</a>(string word, string uppercase)</p><p class="description">
+Returns a human-readable string from $wordReturns a human-readable string from $word, by replacing
+underscores with a space, and by upper-casing the initial
+character by default.
+</p></td>
+</tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#ordinalize()">ordinalize</a>(integer number)</p><p class="description">
+Converts number to its ordinal English form.
+</p></td>
+</tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#pluralize()">pluralize</a>(String word)</p><p class="description">
+Pluralizes English nouns.
+</p></td>
+</tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#singularize()">singularize</a>(string word)</p><p class="description">
+Singularizes English nouns.
+</p></td>
+</tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#tableize()">tableize</a>(string class_name)</p><p class="description">
+Converts a class name to its table name according to rails
+naming conventions.
+</p></td>
+</tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#titleize()">titleize</a>(string word, string uppercase)</p><p class="description">
+Converts an underscored or CamelCase word into a English
+sentence.
+</p></td>
+</tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#underscore()">underscore</a>(string word)</p><p class="description">
+Converts a word "into_it_s_underscored_version"Convert any "CamelCased" or "ordinary Word" into an
+"underscored_word".
+</p></td>
+</tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#variablize()">variablize</a>(string word)</p><p class="description">
+Same as camelize but first char is underscoredConverts a word like "send_email" to "sendEmail". </p></td>
+</tr>
+</table>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="camelize()">camelize</h3>
+<code class="signature">public static  string <strong>camelize</strong>(string word)</code>
+<div class="details">
+<p>
+Returns given word as CamelCased</p><p>Converts a word like "send_email" to "SendEmail". It
+will remove non alphanumeric character from the word, so
+"who's online" will be converted to "WhoSOnline"
+</p><dl>
+<dt>See Also:</dt>
+<dd><a href="../smutty/smutty_inflector.html#variablize()">variablize</a></dd>
+<dt>Parameters:</dt>
+<dd>word - Word to convert to camel case</dd>
+<dt>Returns:</dt>
+<dd>UpperCamelCasedWord</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Inflector#camelize">Go to code</a><hr>
+
+<h3 id="classify()">classify</h3>
+<code class="signature">public static  string <strong>classify</strong>(string table_name)</code>
+<div class="details">
+<p>
+Converts a table name to its class name according to rails
+naming conventions.</p><p>Converts "people" to "Person"
+</p><dl>
+<dt>See Also:</dt>
+<dd><a href="../smutty/smutty_inflector.html#tableize()">tableize</a></dd>
+<dt>Parameters:</dt>
+<dd>table_name - Table name for getting related ClassName.</dd>
+<dt>Returns:</dt>
+<dd>SingularClassName</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Inflector#classify">Go to code</a><hr>
+
+<h3 id="humanize()">humanize</h3>
+<code class="signature">public static  string <strong>humanize</strong>(string word, string uppercase)</code>
+<div class="details">
+<p>
+Returns a human-readable string from $word</p><p>Returns a human-readable string from $word, by replacing
+underscores with a space, and by upper-casing the initial
+character by default.</p><p>If you need to uppercase all the words you just have to
+pass 'all' as a second parameter.
+</p><dl>
+<dt>Parameters:</dt>
+<dd>word - String to "humanize"</dd>
+<dd>uppercase - If set to 'all' it will uppercase all the words
+ * instead of just the first one.</dd>
+<dt>Returns:</dt>
+<dd>Human-readable word</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Inflector#humanize">Go to code</a><hr>
+
+<h3 id="ordinalize()">ordinalize</h3>
+<code class="signature">public static  string <strong>ordinalize</strong>(integer number)</code>
+<div class="details">
+<p>
+Converts number to its ordinal English form.</p><p>This method converts 13 to 13th, 2 to 2nd ...
+</p><dl>
+<dt>Parameters:</dt>
+<dd>number - Number to get its ordinal value</dd>
+<dt>Returns:</dt>
+<dd>Ordinal representation of given string.</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Inflector#ordinalize">Go to code</a><hr>
+
+<h3 id="pluralize()">pluralize</h3>
+<code class="signature">public static  string <strong>pluralize</strong>(String word)</code>
+<div class="details">
+<p>
+Pluralizes English nouns.
+</p><dl>
+<dt>Parameters:</dt>
+<dd>word - English noun to pluralize</dd>
+<dt>Returns:</dt>
+<dd>Plural noun</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Inflector#pluralize">Go to code</a><hr>
+
+<h3 id="singularize()">singularize</h3>
+<code class="signature">public static  string <strong>singularize</strong>(string word)</code>
+<div class="details">
+<p>
+Singularizes English nouns.
+</p><dl>
+<dt>Parameters:</dt>
+<dd>word - English noun to singularize</dd>
+<dt>Returns:</dt>
+<dd>Singular noun.</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Inflector#singularize">Go to code</a><hr>
+
+<h3 id="tableize()">tableize</h3>
+<code class="signature">public static  string <strong>tableize</strong>(string class_name)</code>
+<div class="details">
+<p>
+Converts a class name to its table name according to rails
+naming conventions.</p><p>Converts "Person" to "people"
+</p><dl>
+<dt>See Also:</dt>
+<dd><a href="../smutty/smutty_inflector.html#classify()">classify</a></dd>
+<dt>Parameters:</dt>
+<dd>class_name - Class name for getting related table_name.</dd>
+<dt>Returns:</dt>
+<dd>plural_table_name</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Inflector#tableize">Go to code</a><hr>
+
+<h3 id="titleize()">titleize</h3>
+<code class="signature">public static  string <strong>titleize</strong>(string word, string uppercase)</code>
+<div class="details">
+<p>
+Converts an underscored or CamelCase word into a English
+sentence.</p><p>The titleize function converts text like "WelcomePage",
+"welcome_page" or  "welcome page" to this "Welcome
+Page".
+If second parameter is set to 'first' it will only
+capitalize the first character of the title.
+</p><dl>
+<dt>Parameters:</dt>
+<dd>word - Word to format as tile</dd>
+<dd>uppercase - If set to 'first' it will only uppercase the
+ * first character. Otherwise it will uppercase all
+ * the words in the title.</dd>
+<dt>Returns:</dt>
+<dd>Text formatted as title</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Inflector#titleize">Go to code</a><hr>
+
+<h3 id="underscore()">underscore</h3>
+<code class="signature">public static  string <strong>underscore</strong>(string word)</code>
+<div class="details">
+<p>
+Converts a word "into_it_s_underscored_version"</p><p>Convert any "CamelCased" or "ordinary Word" into an
+"underscored_word".</p><p>This can be really useful for creating friendly URLs.
+</p><dl>
+<dt>Parameters:</dt>
+<dd>word - Word to underscore</dd>
+<dt>Returns:</dt>
+<dd>Underscored word</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Inflector#underscore">Go to code</a><hr>
+
+<h3 id="variablize()">variablize</h3>
+<code class="signature">public static  string <strong>variablize</strong>(string word)</code>
+<div class="details">
+<p>
+Same as camelize but first char is underscored</p><p>Converts a word like "send_email" to "sendEmail". It
+will remove non alphanumeric character from the word, so
+"who's online" will be converted to "whoSOnline"
+</p><dl>
+<dt>Parameters:</dt>
+<dd>word - Word to lowerCamelCase</dd>
+<dt>Returns:</dt>
+<dd>Returns a lowerCamelCasedWord</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Inflector#variablize">Go to code</a><hr>
+
+<div class="header">
+<h1>Smutty</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../smutty/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../smutty/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../smutty/smutty_inflector.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+View: <a href="/code/viewClass/Smutty_Inflector">Source Code</a>
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://phpdoctor.sourceforge.net/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

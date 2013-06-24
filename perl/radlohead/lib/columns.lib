@@ -1,0 +1,118 @@
+###############################################################################################
+###############################################################################################
+##
+##  columns.lib
+##
+###############################################################################################
+###############################################################################################
+
+use strict;
+
+use constant COLUMNS_DIR => BASE . 'cols/';
+
+use FileHandle qw( getline print getlines );
+
+###############################################################################################
+##
+##  get_archive_file()
+##
+###############################################################################################
+
+sub get_archive_file {
+
+  return COLUMNS_DIR . 'all.txt';
+
+}
+
+###############################################################################################
+##
+##  add_column( title, author, content, desc )
+##
+###############################################################################################
+
+sub add_column {
+
+  my ( $title, $author, $content, $desc ) = @_;
+
+  # format vars
+  $content =~ s/\n/<br \/>/g;
+
+  # create directory
+  my ( $sec, $min, $hour, $mday, $mon, $year, $wday, $yday ) = gmtime( time() );
+  my $dir_str = COLUMNS_DIR;
+
+  foreach my $dir ( ( $year, $mon, $mday ) ) {
+    $dir_str .= $dir . '/';
+    mkdir( $dir_str );
+  }
+
+  # get right filename
+  my $id = 0;
+  while ( -e $dir_str . "col$id.pl" ) { $id++; }
+
+  # write data file
+  my $fh_data = new FileHandle( $dir_str . "dat$id.txt", '>' );
+  $fh_data->print( $content );
+  $fh_data->close();
+
+  # write script file
+  my $fh = new FileHandle( $dir_str . "col$id.pl", '>' );
+  $fh->print(qq{
+
+use strict;
+use constant BASE => '@{[ BASE ]}';
+use lib ( BASE . 'lib' );
+
+require 'output.lib';
+
+header( qq{ $title }, '','', 'Columns' );
+open_tr();
+
+local \$/ = undef();
+my \$fh = new FileHandle( "$dir_str" . "dat$id.txt" );
+my \$data = \$fh->getline();
+\$fh->close();
+
+print_box( '$title', \$data, '$author's Column' );
+
+footer();
+
+  });
+  $fh->close();
+
+  # add column to list
+  my $date = gmtime( time() );
+  my $str = "$date:#:$dir_str" . "col$id.pl:#:$title:#:$author:#:$desc";
+
+  archive( get_archive_file(), $str );
+
+}
+
+###############################################################################################
+##
+##  archive( file, str )
+##
+###############################################################################################
+
+sub archive {
+
+  my ( $file, $str ) = @_;
+
+  local $/ = undef();
+
+  my $fh = new FileHandle( $file );
+  my $old = $fh->getline() unless !$fh;
+
+  $fh->close() unless !$fh;
+  $fh = new FileHandle( $file, '>' );
+  $fh->print( "$str\n$old" );
+  $fh->close();
+
+}
+
+###############################################################################################
+
+1;
+
+###############################################################################################
+###############################################################################################

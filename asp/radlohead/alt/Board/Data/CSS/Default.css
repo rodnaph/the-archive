@@ -1,0 +1,19 @@
+/*  Default.css */
+
+BODY {
+
+  background-color: #eeeeee;
+
+  font-family: tahoma;
+  font-size: 8pt;
+  color: #000000;
+
+}
+
+INPUT, TEXTAREA, SELECT {
+
+  background-color: #aabbcc;
+
+  border: 1px #000000 solid;
+
+}

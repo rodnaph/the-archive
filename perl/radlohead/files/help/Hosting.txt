@@ -1,0 +1,28 @@
+<h2>hosting</h2>
+
+At the moment we are unable to provide hosting for sections/pages
+here at radLohead.  This is something that we are looking into though
+and we'll make it known if/when it happens.
+
+<p>If you have a profile and just want to have an image for it hosted
+here then we are able to do this.  All you need to do is simply email
+your image to <a href="mailto:images@radlohead.com">images@radlohead.com</a>
+along with your username and we'll put it on the space.  Each user
+is only allowed one image though, so if you send us a second image it
+will overwite the first.
+
+<p>We'll then get back to you when this is done.  You can then link to
+that image with the following url which you will need to enter into
+the IMAGE field when editing your profile. <help>EditProfile</help>
+
+<xmp>
+
+http://www.radlohead.com/files/images/profiles/YOUR_USERNAME.EXT
+
+</xmp>
+
+<p>It must be noted that YOUR_USERNAME will have to be as it appears in the
+address bar when you view your profile (07.pl).
+
+<p>The .EXT part is the extention and will be whatever type the file was you
+sent us (eg, .jpg or .gif).

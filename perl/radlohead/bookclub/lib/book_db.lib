@@ -1,0 +1,235 @@
+#########################################################
+#########################################################
+##
+##  book_db.lib
+##
+#########################################################
+#########################################################
+
+use strict;
+
+#########################################################
+
+use constant BOOK_DB_FILE => BASE . "bookclub/files/db/book_db";
+use constant BOOK_DB_PERMISSIONS => 0666;
+
+use constant BOOK_COUNT => "BOOK_COUNT";
+
+#########################################################
+
+my %db;
+
+#########################################################
+#########################################################
+
+#########################################################
+##
+##  delete_book(id)
+##
+#########################################################
+
+sub delete_book {
+
+  my ($id) = @_;
+
+  open_db();
+  delete $db{$id};
+  close_db();
+
+}
+
+#########################################################
+##
+##  change_availability(id)
+##
+#########################################################
+
+sub change_availability {
+
+  my ($id) = @_;
+
+  open_db();
+
+  my $rh_book = create_book($db{$id});
+  if ($rh_book->{'AVAILABLE'}) {
+    $rh_book->{'AVAILABLE'} = 0;
+  } else {
+    $rh_book->{'AVAILABLE'} = 1;
+  }
+
+  save_book($rh_book);
+
+  close_db();
+
+}
+
+#########################################################
+##
+##  save_book(rh_book)
+##
+##  (assumes db open)
+##
+#########################################################
+
+sub save_book {
+
+  my ($rh_book) = @_;
+
+  $db{$rh_book->{'ID'}} = $rh_book->{'ID'} . ":#:" .
+                          $rh_book->{'AUTHOR'} . ":#:" .
+                          $rh_book->{'TITLE'} . ":#:" .
+                          $rh_book->{'USERNAME'} . ":#:" .
+                          $rh_book->{'EMAIL'} . ":#:" .
+                          $rh_book->{'AVAILABLE'};
+
+}
+
+#########################################################
+##
+##  add_book(rh_book)
+##
+#########################################################
+
+sub add_book {
+
+  my ($rh_book) = @_;
+
+  open_db();
+
+  $rh_book->{'ID'} = $db{BOOK_COUNT}++;
+  $rh_book->{'AVAILABLE'} = 1;
+  save_book($rh_book);
+
+  close_db();
+
+}
+
+#########################################################
+##
+##  create_book(book_info) : rh_book
+##
+#########################################################
+
+sub create_book {
+
+  my ($book_info) = @_;
+
+  my ($id,$author,$title,$username,$email,$available) = split(/:#:/,$book_info);
+  my $rh_book = {
+                  "ID" => $id,
+                  "AUTHOR" => $author,
+                  "TITLE" => $title,
+                  "USERNAME" => $username,
+                  "EMAIL" => $email,
+                  "AVAILABLE" => $available
+                };
+  return $rh_book;
+
+}
+
+#########################################################
+##
+##  get_books() : (ra_books,book_count)
+##
+#########################################################
+
+sub get_books {
+
+  my (@books);
+
+  open_db();
+  my $book_count = $db{BOOK_COUNT};
+  foreach my $key (keys %db) {
+    if ((not_control_field($key)) && (split(/:#:/,$db{$key}))) {
+      push(@books,create_book($db{$key}));
+    }
+  }
+  close_db();
+
+  return (\@books,$book_count);
+
+}
+
+#########################################################
+##
+##  get_book_hash() : rh_books
+##
+#########################################################
+
+sub get_book_hash {
+
+  my %books;
+
+  open_db();
+  foreach my $key (keys %db) {
+    $books{$key} = $db{$key};
+  }
+  close_db();
+
+  return \%books;
+
+}
+
+#########################################################
+##
+##  search_books(keywords) : ra_books
+##
+#########################################################
+
+sub search_books {
+
+  my ($keywords) = @_;
+  my (@words) = split(/ /,$keywords);
+  my (@matches);
+
+  my $rh_books = get_book_hash();
+
+  foreach my $word (@words) {
+    foreach my $key (keys %$rh_books) {
+      if ($rh_books->{$key} =~ /$word/i) {
+        push(@matches,create_book($rh_books->{$key}));
+        delete $rh_books->{$key};
+      }
+    }
+  }
+
+  return \@matches;
+
+}
+
+#########################################################
+##
+##  not_control_field(key) : boolean
+##
+#########################################################
+
+sub not_control_field {
+
+  my ($key) = @_;
+
+  if ($key !~ /^(BOOK_COUNT)$/) { return 1; }
+    else { return 0; }
+
+}
+
+#########################################################
+##
+##  open_db()
+##  close_db()
+##
+#########################################################
+
+sub open_db {
+
+  dbmopen %db, BOOK_DB_FILE, BOOK_DB_PERMISSIONS;
+  $db{BOOK_COUNT} = 0 unless $db{BOOK_COUNT};
+
+}
+
+sub close_db { dbmclose %db; }
+
+#########################################################
+
+1;
+
+#########################################################

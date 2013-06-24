@@ -1,0 +1,70 @@
+testing rich: rich@skinflowers.org
+  arse@skinflowers.org: arse
+  boo@skinflowers.org: boo
+  rump@skinflowers.org: rump
+  bleh@skinflowers.org: bleh
+rich: rich@skinflowers.org
+  dshfdsf: rich@skinflowers.freeserve.co.uk
+  : 
+  : 
+  : 
+g: mrg@skinmail.co.uk
+  g: mrg@skinmail.co.uk
+  : 
+  : 
+  : 
+mR G: mrg@skinmail.co.uk
+  garyboy: g@skinflowers.f9.co.uk
+  : 
+  : 
+  : 
+gary: mrg@skinmail.co.uk
+  gary leicester: gary.leicester@catchword.com
+  g: g_skinflowers@yahoo.com
+  : 
+  : 
+mr g: g@skinmail.co.uk
+  blah: blah@bl
+  : 
+  : 
+  : 
+shaun: 
+  g: g@skinflowers.org
+  rich: rich@skinflowers.org
+  : 
+  : 
+mrg: mrg@skinmail.co.uk
+  gary: mrg@skinmail.co.uk
+  gary: mrg@skinmail.co.uk
+  : 
+  : 
+mrg: mrg@skinmail.co.uk
+  g: g@skinflowers.f9.co.uk
+  gary: gary@skinflowers.f9.co.uk
+  : 
+  : 
+gary: mrg@skinmail.co.uk
+  g: mrg@skinmail.co.uk
+  : 
+  : 
+  : 
+g: g@skinmail.co.uk
+  gary: gary.leicester@ingenta.com
+  : 
+  : 
+  : 
+luke: stidlittle@666.fm
+  luke: lstidson@btinternet.com
+  : 
+  : 
+  : 
+: 
+  : 
+  : 
+  : 
+  : 
+: 
+  : 
+  : 
+  : 
+  : 

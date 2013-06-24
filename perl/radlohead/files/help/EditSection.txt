@@ -1,0 +1,38 @@
+<h2>editing a section</h2>
+
+Editing the pages in your section is fairly simple assuming you are
+fairly familiar with HTML.  If this is the case then you basically
+enter all the code for the page into the text box provided and then
+click <b>SAVE CHANGES</b>.  Remember to always save your changes after
+you have made any, if you use any of the other features on the page
+after making changes, your changes will NOT be saved.
+
+<p>If you are not familiar with HTML then we strongly advise you to
+go and find some help on the web, it's really simple to pick up,
+honestly.
+
+<h2>linking pages together</h2>
+
+If you have created more than one page for your section then your going
+to want to be able users to navigate between them.  This is done by simply
+using the following code:
+
+<xmp>
+
+<link page="PAGE_NAME">LINK_TEXT</link>
+
+</xmp>
+
+<p>The link to the page PAGE_NAME will then be created for you in your pages.
+NB. The name of the page is whatever YOU called it, make sure you type it correctly
+as otherwise the link will not be created successfully.
+
+<p>The LINK_TEXT part doesn't haev to be plain text, it can be any HTML you
+want.  So, if you want an image to be a link, just put an IMG tag there
+instead.
+
+<h2>hosting</h2>
+
+At the moment we're afraid we can't provide any hosting for images, etc...  This is
+something we are looking into providing in the future.  This means that you will have
+to host any images you use elsewhere and link to them. <help>Hosting</help>

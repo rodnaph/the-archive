@@ -1,0 +1,53 @@
+
+BODY {
+	background-color: #fff;
+	color: #000;
+}
+
+.OK {
+	color: #0c0;
+}
+
+.Error {
+	color: #f33;
+}
+
+
+
+
+
+
+/**
+ *  forms
+ *
+ */
+
+FIELDSET {
+	border: none;
+}
+
+FIELDSET LABEL {
+	clear: left;
+	float: left;
+	width: 120px;
+	text-align: right;
+	padding: 4px;
+	font-weight: bold;
+	font-style: normal;
+}
+
+FIELDSET INPUT, FIELDSET TEXTAREA, FIELDSET SELECT {
+	float: left;
+	width: 50%;
+	background-color: #fff;
+	margin: 4px;
+	margin-bottom: 6px;
+}
+
+FIELDSET INPUT[type=submit] {
+	clear: left;
+	margin-left: 132px;
+	width: auto;
+	font-weight: bold;
+	padding: 2px 8px 2px 8px;
+}

@@ -1,0 +1,109 @@
+###############################################################################################
+###############################################################################################
+##
+##  users.lib
+##
+###############################################################################################
+###############################################################################################
+
+use strict;
+use warnings;
+
+use constant DB => 'madeupclub';
+use constant USER => 'm0ren0';
+use constant PASS => '';
+
+use lib ( '/home/skinorg/lib' );
+use Skinflowers::Database;
+
+###############################################################################################
+##
+##  valid_user( user, pass ) : user
+##
+###############################################################################################
+
+sub valid_user {
+
+  my ( $user, $pass ) = @_;
+
+  # connect to database
+  my $db = new Skinflowers::Database( db => DB, user => USER, pass => PASS );
+
+  # create sql and get result
+  my $sql = ' SELECT * FROM users WHERE name LIKE ' . $db->quote($user) . ' AND pass = ' . $db->quote($pass) . ';
+  my $res = $db->query( $sql );
+
+  # if there is a next row then the user is ok
+  if ( my $row = $res->getNextRow() ) { return $row->{name}; }
+
+}
+
+###############################################################################################
+##
+##  user_exists( username )
+##
+###############################################################################################
+
+sub user_exists {
+
+  my ( $user ) = @_;
+
+  # connect to database
+  my $db = new Skinflowers::Database( db => DB, user => USER, pass => PASS );
+
+  # create sql and get result
+  my $sql = ' SELECT * FROM users WHERE name LIKE ' . $db->quote($user);
+  my $res = $db->query( $sql );
+
+  # if there's a row then user is there
+  if ( $res->getNextRow() ) { return 1; }
+
+}
+
+###############################################################################################
+##
+##  add_user( username, password )
+##
+###############################################################################################
+
+sub add_user {
+
+  my ( $user, $pass ) = @_;
+
+  # trim username
+  $username = trim( $user );
+
+  # insert into database
+  $db = new Skinflowers::Database( db => DB, user => USER, pass => PASS );
+
+  # insert new row
+
+  my $fh = new FileHandle( USER_FILE, '>>' ) || die( 'Unable to open file: ' . USER_FILE );
+
+  $fh->print( "$username:#:#:$password:#:#:\n" );
+  $fh->close();
+
+}
+
+###############################################################################################
+##
+##  trim( text ) : text
+##
+###############################################################################################
+
+sub trim {
+
+  my ( $text, $ret ) = @_;
+
+  $text =~ s/^\s*(.*)/ reverse( $1 ) /e;
+
+  return ( $ret ) ? $text : trim( $text, 1 );
+
+}
+
+###############################################################################################
+
+1;
+
+###############################################################################################
+###############################################################################################

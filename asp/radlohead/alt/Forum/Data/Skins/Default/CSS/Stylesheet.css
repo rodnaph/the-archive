@@ -1,0 +1,124 @@
+/*  Default.css */
+
+BODY {
+
+  background-color: #ffffff;
+
+  scrollbar-face-color: #eeeedd;
+  scrollbar-arrow-color: #555588;
+  scrollbar-base-color: #ddddcc;
+  scrollbar-track-color: #eeeedd;
+
+}
+
+BODY, TD, P, UL, DIV {
+
+  font-family: tahoma;
+  font-size: 8pt;
+  color: #000000;
+
+}
+
+INPUT, TEXTAREA, SELECT {
+
+  background-color: #eeeedd;
+  border: 0px;
+
+}
+
+A {
+
+  color: #888888;
+  text-decoration: none;
+
+}
+
+A:hover {
+
+  color: #000044;
+
+}
+
+.Heading1 {
+
+  font-size: 14pt;
+
+}
+
+.HoverItem:hover {
+
+  background-color: #eeeedd;
+
+}
+
+.TableTitle {
+
+  font-weight: bold;
+
+}
+
+.UserName {
+
+  font-weight: bold;
+
+}
+
+.TitleLink {
+}
+
+.TableItem {
+}
+
+.TableSubTitle {
+}
+
+.InputSubmit {
+
+  font-family: tahoma;
+  font-size: 8pt;
+  font-weight: bold;
+
+  padding: 2px;
+
+}
+
+.InputText {
+
+  font-size: 8pt;
+  font-family: arial;
+
+}
+
+.ListBullet {
+}
+
+.TableHeader {
+
+  background-color: #eeeedd;
+
+}
+
+.TableMain {
+
+  background-color: #eeeeee;
+
+}
+
+.TableBorder {
+
+  background-color: #555588;
+
+}
+
+.HelpHeading {
+
+  font-weight: bold;
+
+}
+
+.ErrorMessage {
+
+  font-weight: bold;
+  color: #cc4444;
+
+}

@@ -1,0 +1,243 @@
+##################################################
+##################################################
+##
+##  forms.lib
+##
+##################################################
+##################################################
+
+use strict;
+
+##################################################
+
+use constant DEFAULT_METHOD => "post";
+use constant DEFAULT_SIZE => 50;
+use constant DEFAULT_MAXLENGTH => 50;
+use constant DEFAULT_COLS => 50;
+use constant DEFAULT_ROWS => 10;
+use constant DEFAULT_ONSUBMIT => "return true";
+
+##################################################
+##
+##  start_form(action,on_submit,method,enctype)
+##
+##################################################
+
+sub start_form {
+
+  my ($action,$on_submit,$method,$enctype) = @_;
+
+  $method = DEFAULT_METHOD unless $method;
+  $on_submit = DEFAULT_ONSUBMIT unless $on_submit;
+
+  if ($enctype) { $enctype = " enctype=\"$enctype\""; }
+
+  print <<EOT;
+
+      <form method="$method" action="$action" onsubmit="$on_submit"$enctype>
+
+      <table>
+EOT
+
+}
+
+##################################################
+##
+##  checkbox(label,name)
+##
+##################################################
+
+sub checkbox {
+
+  my ($label,$name) = @_;
+
+  print <<EOT;
+       <tr>
+         <td align="right">
+             <b>$label</b>
+         </td>
+         <td><input type="checkbox" name="$name" /></td>
+       </tr>
+EOT
+
+}
+
+##################################################
+##
+##  hidden_field(name,value)
+##
+##################################################
+
+sub hidden_field {
+
+  my ($name,$value) = @_;
+
+  print <<EOT;
+        <tr>
+          <td>
+            <input type="hidden" name="$name" value="$value" />
+          </td>
+        </tr>
+EOT
+
+}
+
+##################################################
+##
+##  password_field(label,name,size,maxlength,value)
+##
+##################################################
+
+sub password_field {
+
+  my ($label,$name,$size,$maxlength,$value) = @_;
+
+  input_field("password",$label,$name,$size,$maxlength,$value);
+
+}
+
+##################################################
+##
+##  text_field(label,name,size,maxlength,value)
+##
+##################################################
+
+sub text_field {
+
+  my ($label,$name,$size,$maxlength,$value) = @_;
+
+  input_field("text",$label,$name,$size,$maxlength,$value);
+
+}
+
+##################################################
+##
+##  file_field(label,name,size)
+##
+##################################################
+
+sub file_field {
+
+  my ($label,$name,$size) = @_;
+
+  $size = DEFAULT_SIZE unless $size;
+  $name = $label unless $name;
+
+  print <<EOT;
+         <tr>
+           <td align="right">
+               <b>$label</b>
+           </td>
+           <td>
+             <input type="file" name="$name" size="$size" />
+           </td>
+         </tr>
+EOT
+
+}
+
+##################################################
+##
+##  input_field(type,label,name,size,maxlength,value)
+##
+##################################################
+
+sub input_field {
+
+  my ($type,$label,$name,$size,$maxlength,$value) = @_;
+
+  $name = $label unless $name;
+
+  $size = DEFAULT_SIZE unless $size;
+  $maxlength = DEFAULT_MAXLENGTH unless $maxlength;
+
+  print <<EOT;
+         <tr>
+           <td align="right">
+               <b>$label</b>
+           </td>
+           <td>
+             <input type="$type" name="$name" size="$size" maxlength="$maxlength" value="$value" />
+           </td>
+         </tr>
+EOT
+
+}
+
+##################################################
+##
+##  text_area(label,name,cols,rows,value)
+##
+##################################################
+
+sub text_area {
+
+  my ($label,$name,$cols,$rows,$value) = @_;
+
+  $cols = DEFAULT_COLS unless $cols;
+  $rows = DEFAULT_ROWS unless $rows;
+
+  $name = $label unless $name;
+
+  print <<EOT;
+          <tr>
+            <td align="right" valign="top">
+                <br />&nbsp;<b>$label</b><br />
+            </td>
+            <td>
+              <textarea name="$name" cols="$cols" rows="$rows">$value</textarea>
+            </td>
+          </tr>
+EOT
+
+}
+
+##################################################
+##
+##  submit_button(value)
+##
+##################################################
+
+sub submit_button {
+
+  my ($value) = @_;
+
+  print <<EOT;
+          <tr>
+            <td>
+            </td>
+            <td>
+              <br />
+              <input type="submit" value="$value" />
+            </td>
+          </tr>
+EOT
+
+}
+
+##################################################
+##
+##  end_form(value)
+##
+##################################################
+
+sub end_form {
+
+  my ($value) = @_;
+
+  submit_button($value) unless !$value;
+
+  print <<EOT;
+      </table>
+
+      </form>
+
+EOT
+
+}
+
+##################################################
+
+1;
+
+##################################################

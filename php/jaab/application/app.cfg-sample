@@ -1,0 +1,19 @@
+
+# database
+db.host = localhost
+db.username = 
+db.password = 
+db.name = 
+db.type =
+
+# routes
+route.default = 
+
+# user authentication
+# to enable auth you just need to specify
+# an auth type, you can choose...
+#  standard = db user/passs auth
+# eg. auth.type = standard
+
+# mime types
+# eg. mime.css = text/css

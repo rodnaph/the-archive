@@ -1,0 +1,592 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+<meta name="when" content="Fri, 02 Mar 2007 23:37:49 +0900">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>Smutty_Model_Base (Smutty)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Smutty</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../smutty/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../smutty/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../smutty/smutty_model_base.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">Smutty.Smutty_Model_Base</div>
+
+<h1>Class Smutty_Model_Base</h1>
+
+<pre class="tree"><strong>Smutty_Model_Base</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>Smutty_Model_Base</strong></p>
+
+<div class="comment" id="overview_description"><p>
+ this is the base class for all Smutty models.  it provides
+ many methods and utilities which (hopefully) make using
+ models the joy it should be.</p><p>/</p></div>
+
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type"> mixed</td>
+<td class="description"><p class="name"><a href="#has_many">$has_many</a></p><p class="description">allows specifying dependent models by their name. </p></td>
+</tr>
+<tr>
+<td class="type"> mixed</td>
+<td class="description"><p class="name"><a href="#has_one">$has_one</a></p></td>
+</tr>
+<tr>
+<td class="type"> mixed</td>
+<td class="description"><p class="name"><a href="#has_relation">$has_relation</a></p></td>
+</tr>
+<tr>
+<td class="type"> mixed</td>
+<td class="description"><p class="name"><a href="#rss">$rss</a></p><p class="description">enable rss output for this model */</p></td>
+</tr>
+<tr>
+<td class="type"> mixed</td>
+<td class="description"><p class="name"><a href="#tableName">$tableName</a></p><p class="description">the name of this models table, defaults to false so it will be</p></td>
+</tr>
+<tr>
+<td class="type"> mixed</td>
+<td class="description"><p class="name"><a href="#validate">$validate</a></p><p class="description">this property should be used to specify how data is to</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> nothing</td>
+<td class="description"><p class="name"><a href="#Smutty_Model()">Smutty_Model</a>()</p><p class="description">
+ constructor
+</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#delete()">delete</a>()</p><p class="description">
+ deletes the current model from the database
+</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#deleteWhere()">deleteWhere</a>(mixed class, mixed params)</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#exists()">exists</a>(mixed id, id the)</p><p class="description">
+ determines if a record with the specified id
+ currently exists in this models table
+</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#fetchAll()">fetchAll</a>(mixed class, order order, mixed params, mixed whereSql, class the, params name/value, limit how)</p><p class="description">
+ returns all the records for this model
+</p></td>
+</tr>
+<tr>
+<td class="type"> nothing</td>
+<td class="description"><p class="name"><a href="#fill()">fill</a>()</p><p class="description">
+ this method tries to automatically fill a
+ model with data that has been passed to
+ the application.
+</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../smutty/smutty_model.html">Smutty_Model</a></td>
+<td class="description"><p class="name"><a href="#find()">find</a>(mixed class, mixed id, mixed field, field the)</p><p class="description">
+ this function allows searching for a record by
+ it's unique id. </p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getErrors()">getErrors</a>()</p><p class="description">
+ returns an array containing any errors that were encountered the
+ last time the model was validated.
+</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#isValid()">isValid</a>()</p><p class="description">
+ this function checks if the models data is currently in a
+ valid state to be saved. </p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#save()">save</a>()</p><p class="description">
+ this function saves a models data, it returns a boolean
+ indicating if the save went ahead ok or not.
+</p></td>
+</tr>
+</table>
+
+<h2 id="detail_field">Field Detail</h2>
+<h3 id="has_many">has_many</h3>
+<code class="signature">public  mixed <strong>$has_many</strong> = ''</code>
+<div class="details">
+<p>allows specifying dependent models by their name.  the related</p></div>
+
+<hr>
+
+<h3 id="has_one">has_one</h3>
+<code class="signature">public  mixed <strong>$has_one</strong> = ''</code>
+<div class="details">
+</div>
+
+<hr>
+
+<h3 id="has_relation">has_relation</h3>
+<code class="signature">public  mixed <strong>$has_relation</strong> = ''</code>
+<div class="details">
+</div>
+
+<hr>
+
+<h3 id="rss">rss</h3>
+<code class="signature">public  mixed <strong>$rss</strong> = ''</code>
+<div class="details">
+<p>enable rss output for this model */</p></div>
+
+<hr>
+
+<h3 id="tableName">tableName</h3>
+<code class="signature">public  mixed <strong>$tableName</strong> = false</code>
+<div class="details">
+<p>the name of this models table, defaults to false so it will be</p></div>
+
+<hr>
+
+<h3 id="validate">validate</h3>
+<code class="signature">public  mixed <strong>$validate</strong> = array()</code>
+<div class="details">
+<p>this property should be used to specify how data is to</p></div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="Smutty_Model()">Smutty_Model</h3>
+<code class="signature">public  nothing <strong>Smutty_Model</strong>()</code>
+<div class="details">
+<p>
+ constructor
+</p></div>
+
+<a id="LinkSmutty_Model_BaseSmutty_Model" href="javascript:;" onclick="document.getElementById('CodeSmutty_Model_BaseSmutty_Model').style.display='block';document.getElementById('LinkSmutty_Model_BaseSmutty_Model').style.display='none';">Show Code</a><div id="CodeSmutty_Model_BaseSmutty_Model" class="codeblock"><pre>	function Smutty_Model() {
+		$this-&gt;_data = new stdclass();
+		$this-&gt;_propertyCache = array();
+		$this-&gt;errors = array();
+		$this-&gt;_needsValidating = true;
+	}</pre></div><hr>
+
+<h3 id="delete()">delete</h3>
+<code class="signature">public  boolean <strong>delete</strong>()</code>
+<div class="details">
+<p>
+ deletes the current model from the database
+</p></div>
+
+<a id="LinkSmutty_Model_Basedelete" href="javascript:;" onclick="document.getElementById('CodeSmutty_Model_Basedelete').style.display='block';document.getElementById('LinkSmutty_Model_Basedelete').style.display='none';">Show Code</a><div id="CodeSmutty_Model_Basedelete" class="codeblock"><pre>	function delete() {
+
+		$db = Smutty_Database::getInstance();
+		$class = get_class( $this );
+		$table = Smutty_Model::_getTable( $class );
+		$sql = &quot; delete from `$table`
+				where `id` = '$this-&gt;id' &quot;;
+		return $db-&gt;update( $sql );
+
+	}</pre></div><hr>
+
+<h3 id="deleteWhere()">deleteWhere</h3>
+<code class="signature">public  void <strong>deleteWhere</strong>(mixed class, mixed params)</code>
+<div class="details">
+</div>
+
+<a id="LinkSmutty_Model_BasedeleteWhere" href="javascript:;" onclick="document.getElementById('CodeSmutty_Model_BasedeleteWhere').style.display='block';document.getElementById('LinkSmutty_Model_BasedeleteWhere').style.display='none';">Show Code</a><div id="CodeSmutty_Model_BasedeleteWhere" class="codeblock"><pre>	function deleteWhere( $class, $params ) {
+
+		$db = Smutty_Database::getInstance();
+		$table = Smutty_Model::_getTable( $class );
+		$whereSql = '';
+
+		// create where sql
+		foreach ( $params as $name =&gt; $value )
+			$whereSql .= ' and ( `' . $name . '` = \'' . $db-&gt;escape($value) . '\' ) ';
+		$whereSql = substr( $whereSql, 4 );
+		if ( $whereSql )
+			$whereSql = ' where ' . $whereSql;
+
+		// do the delete
+		$sql = &quot; delete from `$table`
+				$whereSql &quot;;
+		return $db-&gt;update( $sql );
+
+	}</pre></div><hr>
+
+<h3 id="exists()">exists</h3>
+<code class="signature">public  boolean <strong>exists</strong>(mixed id, id the)</code>
+<div class="details">
+<p>
+ determines if a record with the specified id
+ currently exists in this models table
+</p><dl>
+<dt>Parameters:</dt>
+<dd>the - id to search for</dd>
+</dl>
+</div>
+
+<a id="LinkSmutty_Model_Baseexists" href="javascript:;" onclick="document.getElementById('CodeSmutty_Model_Baseexists').style.display='block';document.getElementById('LinkSmutty_Model_Baseexists').style.display='none';">Show Code</a><div id="CodeSmutty_Model_Baseexists" class="codeblock"><pre>	function exists( $id ) {
+		$db = Smutty_Database::getInstance();
+		$table = Smutty_Model::_getTable( get_class($this) );
+		$id = $db-&gt;escape( $id );
+		$sql = &quot; select 1
+				from `$table`
+				where id = '$id' &quot;;
+		$res = $db-&gt;query( $sql );
+		return ( $res-&gt;fetch() );
+	}</pre></div><hr>
+
+<h3 id="fetchAll()">fetchAll</h3>
+<code class="signature">public  array <strong>fetchAll</strong>(mixed class, order order, mixed params, mixed whereSql, class the, params name/value, limit how)</code>
+<div class="details">
+<p>
+ returns all the records for this model
+</p><dl>
+<dt>Parameters:</dt>
+<dd>the - class to search</dd>
+<dd>order - the results by eg. "field:desc"</dd>
+<dd>name/value - pairs for fields to match</dd>
+<dd>how - to limit results eg. "start:count"</dd>
+<dt>Returns:</dt>
+<dd>Model objects</dd>
+</dl>
+</div>
+
+<a id="LinkSmutty_Model_BasefetchAll" href="javascript:;" onclick="document.getElementById('CodeSmutty_Model_BasefetchAll').style.display='block';document.getElementById('LinkSmutty_Model_BasefetchAll').style.display='none';">Show Code</a><div id="CodeSmutty_Model_BasefetchAll" class="codeblock"><pre>	function fetchAll( $class, $order = false, $params = array(), $limit = false, $whereSql = '' ) {
+
+		// specify an order by?
+		$orderSql = '';
+		if ( $order ) {
+			$parts = explode( ':', $order );
+			$orderSql = &quot; order by `$parts[0]` &quot; .
+				( isset($parts[1]) ? &quot; $parts[1] &quot; : 'asc' );
+		}
+
+		// limit results?
+		$limitSql = '';
+		if ( $limit ) {
+			$parts = explode( ':', $limit );
+			$limitSql = isset($parts[1])
+				? &quot; limit $parts[0], $parts[1] &quot;
+				: &quot; limit $parts[0] &quot;;
+		}
+
+		// other params
+		$whereSql = $whereSql ? &quot; and $whereSql &quot; : '';
+		if ( is_array($params) )
+			foreach ( $params as $key =&gt; $value ) {
+				$ops = explode( ':', $key );
+				$name = $ops[ 0 ];
+				$op = isset($ops[1]) ? $ops[1] : '=';
+				switch ( $op ) {
+					case 'contains':
+						$whereSql = &quot; and ( match ($name) against ('$value') ) &quot;;
+						break;
+					case 'like':
+					default:
+						$whereSql .= &quot; and ( `$name` $op '$value' ) &quot;;
+				}
+			}
+		$whereSql = substr( $whereSql, 4 );
+		if ( $whereSql ) $whereSql = &quot; where $whereSql &quot;;
+
+		// generate sql for query
+		$db = Smutty_Database::getInstance();
+		$tblName = Smutty_Model::_getTable( $class );
+		$sql = &quot; select *
+				from `$tblName`
+				$whereSql
+				$orderSql
+				$limitSql &quot;;
+		if ( !$res = $db-&gt;query($sql) )
+			Smutty_Exception::fatal( $db-&gt;getError(), 'ClassSmutty_Model' );
+
+		// put results in array ready to return
+		$array = array();
+		while ( $row = $res-&gt;fetchAssoc() ) {
+			$model = new $class();
+			$model-&gt;_populate( $row );
+			$array[] = $model;
+		}
+
+		return $array;
+
+	}</pre></div><hr>
+
+<h3 id="fill()">fill</h3>
+<code class="signature">public  nothing <strong>fill</strong>()</code>
+<div class="details">
+<p>
+ this method tries to automatically fill a
+ model with data that has been passed to
+ the application.
+</p></div>
+
+<a id="LinkSmutty_Model_Basefill" href="javascript:;" onclick="document.getElementById('CodeSmutty_Model_Basefill').style.display='block';document.getElementById('LinkSmutty_Model_Basefill').style.display='none';">Show Code</a><div id="CodeSmutty_Model_Basefill" class="codeblock"><pre>	function fill() {
+
+		$class = get_class( $this );
+		$db = Smutty_Database::getInstance();
+		$data = Smutty_Data::getInstance();
+		$session = Smutty_Session::getInstance();
+		$hash = $data-&gt;data( strtolower($class) );
+		$fields = Smutty_Model::_getFields( $class );
+
+		foreach ( $fields as $field ) {
+
+			$name = $field-&gt;name;
+
+			// try and fill field with data
+			if ( $value = $hash-&gt;string($field-&gt;name) )
+				$this-&gt;$name = $value;
+
+			// maybe it's a date field?
+			elseif ( preg_match('/^date/',$field-&gt;type) ) {
+				// see if we have special smutty date fields
+				if ( $data-&gt;exists($field-&gt;name . '_year') ) {
+					$year = $data-&gt;string( $field-&gt;name . '_year' );
+					$month = $data-&gt;string( $field-&gt;name . '_month' );
+					$day = $data-&gt;string( $field-&gt;name . '_day' );
+					// only set field if we have all the data
+					if ( $year &amp;&amp; $month &amp;&amp; $day )
+						$this-&gt;$name = date(
+							$db-&gt;getDateFormat(),
+							strtotime(&quot;$year-$month-$day&quot;)
+						);
+				}
+				else $this-&gt;$name = $data-&gt;getDate();
+			}
+
+			// otherwise a user field?
+			elseif ( $session-&gt;user &amp;&amp; ($field-&gt;name == 'user_id') )
+				$this-&gt;$name = $session-&gt;user-&gt;id;
+
+		}
+
+	}</pre></div><hr>
+
+<h3 id="find()">find</h3>
+<code class="signature">public  <a href="../smutty/smutty_model.html">Smutty_Model</a> <strong>find</strong>(mixed class, mixed id, mixed field, field the)</code>
+<div class="details">
+<p>
+ this function allows searching for a record by
+ it's unique id.  if it is found then an instance
+ of it's model object will be returned, otherwise
+ you'll get false.
+</p><dl>
+<dt>Parameters:</dt>
+<dd>the - model class to search</dd>
+<dd>the - id to find</dd>
+<dd>the - field to find on</dd>
+</dl>
+</div>
+
+<a id="LinkSmutty_Model_Basefind" href="javascript:;" onclick="document.getElementById('CodeSmutty_Model_Basefind').style.display='block';document.getElementById('LinkSmutty_Model_Basefind').style.display='none';">Show Code</a><div id="CodeSmutty_Model_Basefind" class="codeblock"><pre>	function find( $class, $id, $field = 'id' ) {
+
+		$cache =&amp; Smutty_Model_Base::_getFindCache();
+		$cacheId = strtolower($class) . $id;
+
+		if ( !isset($cache[$cacheId]) ) {
+
+			$db = Smutty_Database::getInstance();
+			$tblName = Smutty_Model::_getTable( $class );
+			$sql = &quot; select *
+					from `$tblName`
+					where `$field` = '$id' &quot;;
+			if ( !$res = $db-&gt;query($sql) )
+				Smutty_Exception::fatal( $db-&gt;getError(), 'ClassSmutty_Model' );
+			if ( $row = $res-&gt;fetchAssoc() ) {
+				$model = new $class();
+				$model-&gt;_populate( $row );
+				$cache[$cacheId] =&amp; $model;
+			}
+			else $cache[$cacheId] = false;
+
+		}
+
+		return $cache[ $cacheId ];
+
+	}</pre></div><hr>
+
+<h3 id="getErrors()">getErrors</h3>
+<code class="signature">public  array <strong>getErrors</strong>()</code>
+<div class="details">
+<p>
+ returns an array containing any errors that were encountered the
+ last time the model was validated.
+</p></div>
+
+<a id="LinkSmutty_Model_BasegetErrors" href="javascript:;" onclick="document.getElementById('CodeSmutty_Model_BasegetErrors').style.display='block';document.getElementById('LinkSmutty_Model_BasegetErrors').style.display='none';">Show Code</a><div id="CodeSmutty_Model_BasegetErrors" class="codeblock"><pre>	function getErrors() {
+
+		return $this-&gt;errors;
+
+	}</pre></div><hr>
+
+<h3 id="isValid()">isValid</h3>
+<code class="signature">public  boolean <strong>isValid</strong>()</code>
+<div class="details">
+<p>
+ this function checks if the models data is currently in a
+ valid state to be saved.  this means that all validation
+ criteria that have been specified need to be met.</p><p> errors are stored in $this->errors and can be accessed
+ by using the $this->getErrors() function.
+</p></div>
+
+<a id="LinkSmutty_Model_BaseisValid" href="javascript:;" onclick="document.getElementById('CodeSmutty_Model_BaseisValid').style.display='block';document.getElementById('LinkSmutty_Model_BaseisValid').style.display='none';">Show Code</a><div id="CodeSmutty_Model_BaseisValid" class="codeblock"><pre>	function isValid() {
+
+		$errors = array();
+		$fields = Smutty_Model::_getFields( get_class($this) );
+
+		foreach ( $fields as $field ) {
+
+			$name = $field-&gt;name;
+			$value = $this-&gt;$name;
+
+			// check requiredness from db
+			if ( ($name != 'id') &amp;&amp; (!$value &amp;&amp; !$field-&gt;nullable) )
+				array_push( $errors, &quot; $name &quot; . ERR_VALIDATE_REQUIRED );
+
+			// try validate array
+			else if ( $criteria = $this-&gt;validate[$name] )
+				switch ( $criteria ) {
+					case DATE_REQUIRED:
+						if ( !$value )
+							array_push( $errors, &quot; $name &quot; . ERR_VALIDATE_REQUIRED );
+						break;
+					case STR_REQUIRED:
+						if ( !$value )
+							array_push( $errors, &quot; $name &quot; . ERR_VALIDATE_REQUIRED );
+						break;
+					case INT_REQUIRED:
+						$value = Smutty_Data::getInt( $value );
+						if ( !$value )
+							array_push( $errors, &quot; $name &quot; . ERR_VALIDATE_REQUIRED );
+						break;
+				}
+
+			// is there a validate method defined?
+			$method = 'validate' . ucfirst($name);
+			if ( method_exists($this,$method) ) {
+				$data = Smutty_Data::getInstance();
+				$session =&amp; Smutty_Session::getInstance();
+				if ( $error = $this-&gt;$method($value,$data,$session) )
+					array_push( $errors, $error );
+			}
+
+		}
+
+		// set errors on current controller
+		Smutty_Controller::addErrors( $errors );
+
+		$this-&gt;errors = $errors;
+		$this-&gt;_needsValidating = ( $errors );
+		return ( !$this-&gt;_needsValidating );
+
+	}</pre></div><hr>
+
+<h3 id="save()">save</h3>
+<code class="signature">public  boolean <strong>save</strong>()</code>
+<div class="details">
+<p>
+ this function saves a models data, it returns a boolean
+ indicating if the save went ahead ok or not.
+</p></div>
+
+<a id="LinkSmutty_Model_Basesave" href="javascript:;" onclick="document.getElementById('CodeSmutty_Model_Basesave').style.display='block';document.getElementById('LinkSmutty_Model_Basesave').style.display='none';">Show Code</a><div id="CodeSmutty_Model_Basesave" class="codeblock"><pre>	function saves a models data, it returns a boolean
+	 *  indicating if the save went ahead ok or not.
+	 *
+	 *  @return boolean
+	 *
+	 */
+
+	function save() {
+
+		$class = get_class( $this );
+		$db = Smutty_Database::getInstance();
+		$sql = null;
+
+		// first we need to do any data validation that is required
+		if ( $this-&gt;_needsValidating &amp;&amp; !$this-&gt;isValid() )
+			return false;
+
+		// existing record or new one?
+		if ( $this-&gt;id &amp;&amp; $this-&gt;exists($this-&gt;id) )
+			$sql = $this-&gt;_getUpdateSql();
+		else
+			$sql = $this-&gt;_getInsertSql();
+
+		if ( $db-&gt;update($sql) ) {
+			if ( !$this-&gt;id )
+				$this-&gt;id = $db-&gt;getInsertId( $this-&gt;_getTable($class) );
+			// as this model has been edited we need
+			// to remove it from the find() cache
+			$cache =&amp; Smutty_Model_Base::_getFindCache();
+			unset( $cache[get_class($this).$this-&gt;id] );
+			return true;
+		}
+		else return false;
+
+	}</pre></div><hr>
+
+<div class="header">
+<h1>Smutty</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../smutty/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../smutty/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../smutty/smutty_model_base.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://phpdoctor.sourceforge.net/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

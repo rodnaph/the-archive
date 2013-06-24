@@ -1,0 +1,630 @@
+
+BODY {
+
+	background-color: #ddd;
+	background-image: url(../images/main-background.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+
+	font-family: tahoma, arial, helvetica, verdana;
+	font-size: 0.8em;
+
+	margin: 0px;
+
+}
+
+H1 {
+	font-size: 1.8em;
+	font-weight: normal;
+	padding: 0px 0px 5px 12px;
+	margin: 0px;
+	text-transform: uppercase;
+}
+
+H2 {
+	font-size: 1.5em;
+	margin: 3px 3px 10px 3px;
+	border-bottom: 1px #ccc solid;
+	font-style: normal;
+	font-weight: bold;
+	letter-spacing: 3px;
+}
+
+A IMG {
+	border: none;
+}
+
+
+
+
+
+
+
+/**
+ *  title section
+ *
+ */
+
+#TitleWrap {
+	background-color: #fc0;
+	border-bottom: 1px #444 solid;
+	position: fixed;
+	display: block;
+	width: 100%;
+}
+
+#SiteDescription {
+	padding: 10px 5px 1px 14px;
+	text-transform: uppercase;
+	font-size: 0.9em;
+}
+
+
+
+
+
+
+
+
+
+
+/**
+ *  the main section
+ *
+ */
+
+#MainWrap {
+	padding: 95px 15px 15px 15px;
+}
+
+
+
+
+
+
+
+
+
+
+/**
+ *  footer section
+ *
+ */
+
+#FootWrap {
+	clear: both;
+	padding: 20px 10px 10px 20px;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ *  the groups section
+ *
+ */
+ 
+#GroupSection {
+	background-color: #bbf;
+}
+
+#GroupSection H2 {
+	border-bottom: 1px #aae solid;
+}
+
+#GroupSection A {
+	color: #c33;
+}
+
+#GroupTags {
+	width: 400px;
+	background-color: #bbf;
+	border: 1px #bbf solid;
+}
+
+#GroupTags:focus {
+	background-color: #fff;
+	border: 1px #66a solid;
+}
+
+#GroupUpdateTags {
+	visibility: hidden;
+}
+
+
+
+
+
+
+
+
+/**
+ *  the pages section
+ *
+ */
+
+#PageSection {
+	background-color: #bfb;
+}
+
+#PageSection H2 {
+	border-color: #8c8;
+}
+
+
+
+
+
+
+
+
+
+/**
+ *  the projects section
+ *
+ */
+
+#ProjectSection {
+	background-color: #fea;
+}
+
+#ProjectSection H2 {
+	border-color: #cb8;
+}
+
+
+
+
+
+
+
+
+
+
+/**
+ *  tasks section
+ *
+ */
+
+#TaskSection {
+	background-color: #cbc;
+}
+
+#TaskSection H2 {
+	border-color: #989;
+}
+
+
+
+
+
+
+
+
+
+
+/**
+ *  forms
+ *
+ */
+
+FIELDSET {
+	border: none;
+}
+
+FIELDSET LABEL {
+	clear: left;
+	float: left;
+	width: 120px;
+	text-align: right;
+	padding: 4px;
+	font-weight: bold;
+	font-style: normal;
+}
+
+FIELDSET INPUT, FIELDSET TEXTAREA, FIELDSET SELECT {
+	float: left;
+	width: 50%;
+	border: 1px #555 solid;
+	background-color: #fff;
+	margin: 4px;
+	margin-bottom: 6px;
+}
+
+FIELDSET INPUT:focus, FIELDSET TEXTAREA:focus, FIELDSET SELECT:focus {
+	border-right: 5px #555 solid;
+}
+
+FIELDSET INPUT[type=submit] {
+	clear: left;
+	margin-left: 132px;
+	width: auto;
+	background-color: #555;
+	color: #fc3;
+	font-weight: bold;
+	padding: 2px 8px 2px 8px;
+}
+
+FIELDSET INPUT[readonly=readonly] {
+	background-color: inherit;
+	border: none;
+	font-weight: bold;
+	padding: 1px;
+}
+
+FIELDSET INPUT.Elipsis {
+	width: auto;
+}
+
+
+
+
+
+
+
+
+/**
+ *  navigation bar
+ *
+ */
+
+#NavWrap {
+	padding: 2px;
+}
+
+#NavWrap A {
+	color: #000;
+	padding: 2px 5px 2px 5px;
+	width: 150px;
+	text-decoration: none;
+}
+
+#NavWrap DIV.MenuChildren {
+	position: absolute;
+	display: none;
+	border: 1px #555 solid;
+}
+
+#NavWrap A.MenuItem {
+	display: block;
+	background-color: #fe3;
+	padding-left: 5px; 
+}
+
+#NavWrap A.MenuItem:hover, #NavWrap A.MenuExpanded {
+	background-color: #fc0;
+	font-weight: bold;
+}
+
+#NavWrap A.MenuParent {
+	background-image: url(../images/menu-parent-back.png);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+#NavWrap A.MenuRoot {
+	margin-left: 5px;
+	background-color: inherit;
+	background-image: none;
+	border: none;
+	font-weight: normal;
+}
+
+#NavWrap IMG {
+	display: inline;
+	border: none;
+	margin-right: 6px;
+}
+
+#NavWrap A.MenuRoot .MenuItemImage {
+	border: none;
+	margin-right: 4px;
+}
+
+
+
+
+
+
+
+
+
+/**
+ *  dashbox
+ *
+ */
+
+.Dashbox {
+	float: left;
+	width: 30%;
+	margin: 5px 5px 15px 5px;
+}
+
+.Dashbox H3 {
+	margin: 0px 0px 5px 4px;
+	font-size: 1.2em;
+	font-weight: bold;
+	letter-spacing: 3px;
+	text-align: left;
+	color: #006;
+}
+
+.Dashbox UL {
+}
+
+.Dashbox P.Links {
+	font-size: 11px;
+	background-color: #eee;
+	border: 1px #aaa solid;
+	padding: 2px 8px 2px 8px;
+}
+
+
+
+
+
+
+
+/**
+ *  popup menus
+ *
+ */
+
+.PopupMenu {
+	position: absolute;
+	display: none;
+	background-color: #eee;
+	border: 1px #000 solid;
+	border-top: 2px #000 solid;
+	width: 200px;
+}
+
+.PopupMenu A {
+	display: block;
+	padding: 2px 2px 2px 14px;
+	color: #000;
+	text-decoration: none;
+}
+
+.PopupMenu A:hover {
+	background-color: #ddd;
+	font-weight: bold;
+}
+
+
+
+
+
+/**
+ *  tasks
+ *
+ */
+
+.Task {
+}
+
+.Task LABEL {
+	clear: left;
+	display: block;
+	float: left;
+	background-color: #bab;
+	color: #303;
+	width: 100px;
+	padding: 2px 5px 2px 2px;
+	text-align: right;
+	font-weight: bold;
+	margin: 1px;
+	border: 1px #a9a solid;
+}
+
+.Task .LabelValue {
+	float: left;
+	padding: 3px;
+	margin: 1px 1px 1px 9px;
+	font-style: italic;
+}
+
+.Task .Body {
+	clear: left;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px #bab dashed;
+	margin: 10px;
+}
+
+.Task .Actions {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.Task .Actions INPUT {
+	background-color: #757;
+	border: 1px #646 solid;
+	color: #eee;
+	font-weight: bold;
+	padding: 2px 8px 2px 8px;
+	margin-left: 5px;
+}
+
+#TaskUpdateWrap {
+	display: none;
+	margin-top: 20px;
+	background-color: #bab;
+	padding: 5px;
+}
+
+#TaskUpdateWrap H3, #TaskUpdateWrap P {
+	padding-left: 20px;
+}
+
+.Task #RightWrap {
+	float: right;
+	width: 170px;
+	border: 1px #a9a solid;
+	padding: 3px;
+	background-color: #bab;
+}
+
+.Task #RightWrap H3 {
+	margin: 3px 5px 5px 8px;
+	color: #303;
+}
+
+.Task #RightWrap UL {
+	margin: 0px;
+	padding: 0px 4px 4px 25px;
+}
+
+.Task #RightWrap .Note {
+	display: inline;
+	font-size: 8px;
+}
+
+/**
+ *  task history
+ *
+ */
+
+.TaskHistory {
+	padding-top: 10px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.TaskHistory .Info LABEL {
+	clear: left;
+	display: block;
+	float: left;
+	background-color: #aaa;
+	color: #333;
+	width: 100px;
+	padding: 2px 5px 2px 2px;
+	text-align: right;
+	font-weight: bold;
+	margin: 1px;
+	border: 1px #999 solid;
+}
+
+.TaskHistory .Info .LabelValue {
+	float: left;
+	padding: 3px;
+	margin: 1px 1px 1px 9px;
+	font-style: italic;
+}
+
+.TaskHistory .Body {
+	padding: 10px;
+	clear: left;
+	background-color: #eee;
+	border: 1px #aaa solid;
+}
+
+
+
+
+
+
+
+
+/**
+ *  explorer windows
+ *
+ */
+
+DIV#ExplorerTree {
+	margin: 8px;
+	height: 290px;
+	width: 560px;
+	background-color: #fff;
+	border: 1px #aaa solid;
+	padding: 10px;
+	max-height: 310px;
+	overflow: scroll;
+}
+
+DIV#ExplorerTree > UL {
+	margin: 0px;
+	padding: 0px;
+}
+
+DIV#ExplorerTree LI > UL {
+}
+
+DIV#ExplorerTree LI {
+	padding: 2px;
+}
+
+DIV#ExplorerControls {
+	float: right;
+	padding: 8px 15px 8px 8px;
+	text-align: right;
+}
+
+DIV#ExplorerControls INPUT {
+	border: 1px #666 solid;
+	background-color: #bbb;
+	font-weight: bold;
+	width: 100px;
+}
+
+LI.ExplorerTreeNode {
+	list-style-image: url(../images/12x12/empty.png);
+	list-style-type: circle;
+}
+
+LI.ExplorerTreeNode IMG {
+	margin-right: 5px;
+}
+
+DIV#ExplorerDisplay {
+	padding: 5px 5px 5px 15px;
+}
+
+
+
+
+
+
+
+/**
+ *  pages
+ *
+ */
+
+.PageBody {
+	background-color: #fff;
+	padding: 10px;
+	margin: 5px;
+	border: 1px #aaa solid;
+}
+
+
+
+
+
+
+
+
+/**
+ *  misc
+ *
+ */
+
+DIV.SmallNote {
+	display: inline;
+	font-size: 10px;
+}
+
+.Critical {
+	color: #f00;
+}

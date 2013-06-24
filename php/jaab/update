@@ -1,0 +1,6 @@
+#!/bin/sh
+
+bzr export tmp application/
+scp -r tmp/* rodnaph@pu-gh.com:apps/jaab/application/
+rm -rf tmp/
+

@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>TileStrips</title>
+
+<script language="javascript" type="text/javascript" src="Tile.js"></script>
+<script language="javascript" type="text/javascript">
+
+var SPEED = 40;
+
+function Tile_doStripFade() {
+
+  var oldColor = this.document.style.backgroundColor;
+  var newColor = this.changer( oldColor );
+
+  // change color
+  this.setColor( newColor );
+
+  // effect the next tile along
+  if ( this.toEffect ) {
+    this.toEffect = false;
+    var pos = this.x + Tiles.SIZE;
+    if ( pos < 700 )
+      Tiles.getTile( pos, this.y ).startStripFade();
+  }
+
+  // set color changer and alter level
+  if ( newColor == '#ff0000' ) {
+
+    status = 'Stopped ' +this.position;
+    this.changer = decColor;
+
+  }
+  else if ( oldColor == '#000000' ) {
+
+    this.changer = incColor;
+
+  }
+
+  this.setTimeout();
+
+}
+
+function Tile_startStripFade() {
+
+  if ( this.stopped ) {
+    this.setTimeout();
+    this.stopped = false;
+  }
+
+}
+
+function incColor( strColor ) {
+
+  var char = String.fromCharCode( strColor.charCodeAt(1) + 1 );
+
+  if ( char == '9' ) char = 'a';
+  if ( char == 'g' ) char = 'f';
+
+  // create the new color
+  var color = '#' +char+char+ '0000'
+
+  return color;
+
+}
+
+function decColor( strColor ) {
+
+  var char = String.fromCharCode( strColor.charCodeAt(1) - 1 );
+
+  if ( char == 'a' ) char = '9';
+  if ( char == '/' ) char = '0';
+
+  // create the new color
+  var color = '#' +char+char+ '0000'
+
+  return color;
+
+}
+
+var startID = 0;	/* the currently starting id */
+var stID = -1;	/* the id of the startStrip interval */
+
+function startStrip() {
+
+  if ( startID < startTiles.length ) {
+    Tiles.tiles[startTiles[startID].position].startStripFade();
+    startID++;
+  }
+  else clearInterval( stID );
+
+}
+
+var startTiles = new Array();
+
+for ( var j=120; j<500; j+=220 ) {
+ for ( var i=0; i<700; i+=Tiles.SIZE ) {
+
+  var tile = new Tile( i, j );
+  tile.changer = decColor;
+  tile.toEffect = true;
+  tile.stopped = true;
+  tile.doStripFade = Tile_doStripFade;
+  tile.startStripFade = Tile_startStripFade;
+  tile.setTimeout = new Function( 'setTimeout( \'Tiles.tiles[' +tile.position+ '].doStripFade()\', ' +SPEED+ ' )' );
+  tile.create();
+
+  if ( i == 0 )
+    startTiles.push( tile );
+
+ }
+}
+
+</script>
+
+</head>
+
+<body bgcolor="#000000" onload="stID = setInterval( 'startStrip()', 1000 )">
+</body>
+</head>

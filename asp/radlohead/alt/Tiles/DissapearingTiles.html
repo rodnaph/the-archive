@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>DissapearingTiles</title>
+
+<script language="javascript" type="text/javascript" src="Tile.js"></script>
+<script language="javascript">
+
+function Tile_explode() {
+
+  if ( !this.exploded ) {
+
+    // explode this tile
+    this.exploded = true;
+    this.intervalID = setInterval( 'Tiles.tiles[' +this.position+ '].mouseover()', 250 );
+
+  }
+
+  // only try if there are neighbours left
+  if ( this.neighboursLeft > 0 ) {
+
+    // explode neighbours if not already exploded
+    var toTry = new Array(
+                           new Array( this.x, this.y - Tiles.SIZE ),
+                           new Array( this.x, this.y + Tiles.SIZE ),
+                           new Array( this.x - Tiles.SIZE, this.y ),
+                           new Array( this.x + Tiles.SIZE, this.y )
+                         );
+
+    // try exploding neighbours
+    for ( var i in toTry ) {
+      if ( Math.random() < 0.1 ) {
+        var t = toTry[i];
+        var tile = Tiles.getTile( t[0], t[1] );
+        if ( tile != null && !tile.exploded ) setTimeout( 'Tiles.tiles[' +tile.id+ '].mouseover()', 500 );
+        this.neighboursLeft--;
+      }
+    }
+
+  }
+
+  var oldColor = this.document.style.backgroundColor;
+
+  // set color changer and alter level
+  if ( oldColor == '#ff0000' ) {
+    this.changer = decColor;
+    this.kill( false );
+  }
+  else if ( oldColor == '#000000' ) {
+//    this.changer = incColor;
+    this.kill( true );
+  }
+
+  var newColor = this.changer( oldColor );
+  this.document.style.backgroundColor = newColor;
+
+}
+
+function incColor( strColor ) {
+
+  var char = String.fromCharCode( strColor.charCodeAt(1) + 1 );
+
+  if ( char == '9' ) char = 'a';
+  if ( char == '/' ) char = '0';
+
+  // create the new color
+  var color = '#' +char+char+ '0000'
+
+  return color;
+
+}
+
+function decColor( strColor ) {
+
+  var char = String.fromCharCode( strColor.charCodeAt(1) - 1 );
+
+  if ( char == 'a' ) char = '9';
+  if ( char == '/' ) char = '0';
+
+  // create the new color
+  var color = '#' +char+char+ '0000'
+
+  return color;
+
+}
+
+function TileGrid() {
+
+  this.x = 0;
+  this.y = 0;
+
+  this.create = TileGrid_create
+
+}
+
+function TileGrid_create() {
+
+  for ( var i=0; i<700; i+=Tiles.SIZE ) {
+    for ( var j=0; j<500; j+=Tiles.SIZE ) {
+      var tile = new Tile( this.x + i, this.y + j, this );
+      tile.exploded = false;
+      tile.level = 0;
+      tile.neighboursLeft = 4;
+      tile.mouseover = Tile_explode;
+      tile.kill = Tile_kill;
+      tile.changer = decColor;
+      tile.create();
+    }
+  }
+
+}
+
+function Tile_kill( exploded ) {
+
+  if ( this.exploded && (Math.random() < 0.05) ) {
+    this.exploded = exploded;
+    clearInterval( this.intervalID );
+  }
+
+}
+
+var tg = new TileGrid();
+tg.create();
+
+</script>
+
+</head>
+
+<body bgcolor="#000000">
+
+</body>
+</html>

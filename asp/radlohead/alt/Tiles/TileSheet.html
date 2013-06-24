@@ -1,0 +1,183 @@
+<html>
+<head>
+<title></title>
+
+<script language="javascript" type="text/javascript" src="CGI.js"></script>
+<script language="javascript" type="text/javascript">
+
+var nn=(navigator.appName=='Netscape')?1:0;
+var nn6=(nn&&document.getElementById)?1:0;
+var nn4=(nn&&document.layers)?1:0;
+var op=(navigator.userAgent.indexOf('Opera')!=-1)?1:0;
+var ie=(!op&&document.all)?1:0;
+var redirecting = false;
+
+if ( self == top ) {
+  redirecting = true;
+  top.location.href = 'index.html';
+}
+
+var BlueColorManager = {
+  Value : '#0000ff',
+  newValue : new Function( 'c', 'return stdColorChanger(c,5)' )
+};
+
+var RedColorManager = {
+  Value : '#ff0000',
+  newValue : new Function( 'c', 'return stdColorChanger(c,1)' )
+};
+
+var GreenColorManager = {
+  Value : '#00ff00',
+  newValue : new Function( 'c', 'return stdColorChanger(c,3)' )
+};
+
+var ColorManagers = {
+  Blue : BlueColorManager,
+  Red : RedColorManager,
+  Green : GreenColorManager
+};
+
+var Tiles = {
+  Width : 700,
+  Height : 500,
+  Size : 20,
+  Horizontal : null,
+  Vertical : null,
+  ID : 0,
+  Total : 0,
+  Window : null,
+  Document : null,
+  ColorManager : ColorManagers.Red,
+  create : _Tiles_create
+};
+
+function _Tiles_create() {
+
+  var strTag = ( nn4 ) ? 'layer' : 'div';
+  var nav = parent.tileNav;
+
+  nav.initLoader();
+
+  for ( var j=0; j<this.Vertical; j++ ) {
+
+    for ( var i=0; i<this.Horizontal; i++ ) {
+
+      var id = this.ID++;
+      var percentage = Math.round(100 * (id / this.Total)) + 1;
+
+      nav.setLoader( percentage );
+
+      this.Document.writeln( '<' +strTag+ ' id="Tile' +id+ '"><table width="' +this.Size+ 'px" height="' +this.Size+ '" ' +
+                              'cellpadding="0" cellspacing="0" border="0"><tr><td style="font-size:0pt;">&nbsp;</td></tr></table></' +strTag+ '>' );
+
+      var objDoc = fetchDocumentObject( 'Tile' +id );
+      var Pos = {
+        x : i * this.Size,
+        y : j * this.Size
+      };
+
+      if ( ie )
+        with ( objDoc.style ) {
+          backgroundColor = this.ColorManager.Value;
+          position = 'absolute';
+          pixelLeft = Pos.x;
+          pixelTop = Pos.y;
+        }
+
+      if ( nn4 ) {
+        objDoc.moveTo( Pos.x, Pos.y );
+        objDoc.bgColor = this.ColorManager.Value;
+      }
+
+      objDoc.onmouseover = new Function( 'updateTile( \'Tile' +id+ '\')' );
+
+    }
+
+  }
+
+  status = 'Tiles Created! Rendering Page...';
+  nav.clearLoader();
+
+}
+
+function updateTile( id ) {
+
+  var objStyle = fetchStyleObject( id );
+  var bgcolor = new String( (nn4) ? objStyle.bgcolor : objStyle.backgroundColor );
+
+  bgcolor = Tiles.ColorManager.newValue( bgcolor );
+
+  if ( nn4 )
+    objStyle.bgColor = bgcolor;
+  else
+    objStyle.backgroundColor = bgcolor;
+
+}
+
+function stdColorChanger( strColor, sampleIndex ) {
+
+  var char = String.fromCharCode( strColor.charCodeAt(sampleIndex) - 1 );
+
+  if ( char == 'a' ) char = '9';
+  if ( char == '/' ) char = '0';
+
+  color = '#';
+
+  for ( var i=0; i<6; i++ )
+    if ( (i == sampleIndex-1) || (i == sampleIndex) ) color += char;
+      else color += '0';
+
+  return color;
+
+}
+
+function fetchStyleObject( id ) {
+
+  if ( nn4 )
+    return Tiles.Document.layers[ id ];
+  else
+    return Tiles.Document.getElementById( id ).style;
+
+}
+
+function fetchDocumentObject( id ) {
+
+  if ( nn4 )
+    return Tiles.Document.layers[ id ];
+  else
+    return Tiles.Document.getElementById( id );
+
+}
+
+if ( !redirecting ) {
+
+  // setup tile object
+  Tiles.Size = parent.prompt( 'Please Pixel Size Of Each Tile... (15+ Reccomended)', '100' );
+  Tiles.Vertical = Tiles.Height / Tiles.Size;
+  Tiles.Horizontal = Tiles.Width / Tiles.Size;
+  Tiles.Total = Math.round( (Tiles.Vertical+1) * Tiles.Horizontal );
+  Tiles.CreatedMessage = 'TileSheet Ready!';
+
+  if ( !isNaN(Tiles.Size) && (Tiles.Size != '') && parent.confirm( 'About to create TileSheet with ' +Tiles.Total+ ' Tiles, OK?' ) ) {
+
+    Tiles.Document = document;
+    Tiles.create();
+
+  }
+  else {
+
+    Tiles.CreatedMessage = 'No TileSheet Created...';
+    alert( 'TileSheet Not Created.' );
+
+  }
+
+}
+
+</script>
+
+</head>
+
+<body onload="status = Tiles.CreatedMessage">
+</body>
+</html>

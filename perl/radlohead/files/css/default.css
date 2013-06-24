@@ -1,0 +1,28 @@
+/* default.css */
+
+BODY {
+
+  background-color: #aaaabb;
+
+}
+
+BODY, TD {
+
+  font-family: arial,helvetica,verdana;
+  font-size: 8pt;
+  color: #000000;
+
+}
+
+A {
+
+  color: #444466;
+  text-decoration: none;
+
+}
+
+A:hover {
+
+  text-decoration: underline;
+
+}

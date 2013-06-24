@@ -1,0 +1,1105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+<meta name="when" content="Wed, 18 Apr 2007 22:57:57 +0900">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>Functions (Smutty)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Smutty</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../smutty/package-summary.html">Package</a></li>
+<li class="active">Function</li>
+<li><a href="../overview-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../smutty/package-functions.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_function">Function</a>
+Detail: <a href="#detail_function">Function</a>
+</div>
+<hr>
+
+<h1>Functions</h1>
+
+<hr>
+
+<table id="summary_function" class="title">
+<tr><th colspan="2" class="title">Function Summary</th></tr>
+<tr>
+<td class="type"> nothing</td>
+<td class="description"><p class="name"><a href="#__autoload()">__autoload</a>(mixed className, className the)</p><p class="description">
+ this function handles loading of smutty classes as and
+ when they're needed, but is only supported by php5 >
+</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_ajax_libs()">smarty_function_ajax_libs</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_button()">smarty_function_button</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_checkbox()">smarty_function_checkbox</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_datefields()">smarty_function_datefields</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_draggable()">smarty_function_draggable</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_droppable()">smarty_function_droppable</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_field()">smarty_function_field</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_form()">smarty_function_form</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_form_end()">smarty_function_form_end</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_hidden()">smarty_function_hidden</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_javascript()">smarty_function_javascript</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_label()">smarty_function_label</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_link()">smarty_function_link</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_linkSelect()">smarty_function_linkSelect</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_notice()">smarty_function_notice</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_paginate()">smarty_function_paginate</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_password()">smarty_function_password</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_rss()">smarty_function_rss</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_select()">smarty_function_select</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_show_errors()">smarty_function_show_errors</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_smutty_link()">smarty_function_smutty_link</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_submit()">smarty_function_submit</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_tabgroup()">smarty_function_tabgroup</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_tabpage()">smarty_function_tabpage</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_tabpage_end()">smarty_function_tabpage_end</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_textarea()">smarty_function_textarea</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_url()">smarty_function_url</a>(mixed params)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_function_url_full()">smarty_function_url_full</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_modifier_jsonize()">smarty_modifier_jsonize</a>(mixed object)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_modifier_plural()">smarty_modifier_plural</a>(mixed number, mixed singular)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_modifier_pluralize()">smarty_modifier_pluralize</a>(mixed phrase)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_prefilter_allow_assoc_attrs()">smarty_prefilter_allow_assoc_attrs</a>(mixed tpl_source, mixed smarty)</p><p class="description">
+ this filter changes all assoc array style attributes to
+ flat strings that can then be changed back by whichever
+ plugin needs to use them.
+</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smarty_prefilter_allow_assoc_attrs_replace()">smarty_prefilter_allow_assoc_attrs_replace</a>(mixed varString)</p></td>
+</tr>
+<tr>
+<td class="type"> nothing</td>
+<td class="description"><p class="name"><a href="#smutty_error_handler()">smutty_error_handler</a>(mixed errno, mixed errstr, mixed errfile, mixed errline, mixed errcon, $errno severity, $errstr description, $errcon the)</p><p class="description">
+ this is the handler for ALL errors generated when smutty
+ is running. </p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smutty_function_ajax_libs()">smutty_function_ajax_libs</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> the</td>
+<td class="description"><p class="name"><a href="#smutty_function_button()">smutty_function_button</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a button
+</p></td>
+</tr>
+<tr>
+<td class="type"> the</td>
+<td class="description"><p class="name"><a href="#smutty_function_checkbox()">smutty_function_checkbox</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a form checkbox field
+</p></td>
+</tr>
+<tr>
+<td class="type"> html</td>
+<td class="description"><p class="name"><a href="#smutty_function_datefields()">smutty_function_datefields</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a set of date field selects
+</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#smutty_function_datefields_getObjectRange()">smutty_function_datefields_getObjectRange</a>(int min, int max)</p><p class="description">
+ returns an array of objects with they're id and name
+ attributes set to the specified range of numbers
+</p></td>
+</tr>
+<tr>
+<td class="type"> html</td>
+<td class="description"><p class="name"><a href="#smutty_function_draggable()">smutty_function_draggable</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a draggable element
+</p></td>
+</tr>
+<tr>
+<td class="type"> html</td>
+<td class="description"><p class="name"><a href="#smutty_function_droppable()">smutty_function_droppable</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a droppable element
+</p></td>
+</tr>
+<tr>
+<td class="type"> the</td>
+<td class="description"><p class="name"><a href="#smutty_function_field()">smutty_function_field</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a form input field
+</p></td>
+</tr>
+<tr>
+<td class="type"> html</td>
+<td class="description"><p class="name"><a href="#smutty_function_form()">smutty_function_form</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a form
+</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smutty_function_form_end()">smutty_function_form_end</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> the</td>
+<td class="description"><p class="name"><a href="#smutty_function_hidden()">smutty_function_hidden</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a hidden form field
+</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smutty_function_javascript()">smutty_function_javascript</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> the</td>
+<td class="description"><p class="name"><a href="#smutty_function_label()">smutty_function_label</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a form label
+</p></td>
+</tr>
+<tr>
+<td class="type"> html</td>
+<td class="description"><p class="name"><a href="#smutty_function_link()">smutty_function_link</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for an anchor element. </p></td>
+</tr>
+<tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#smutty_function_linkSelect()">smutty_function_linkSelect</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smutty_function_linkSelectText()">smutty_function_linkSelectText</a>(mixed params)</p></td>
+</tr>
+<tr>
+<td class="type"> html</td>
+<td class="description"><p class="name"><a href="#smutty_function_notice()">smutty_function_notice</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for displaying a brief notice on the page
+</p></td>
+</tr>
+<tr>
+<td class="type"> html</td>
+<td class="description"><p class="name"><a href="#smutty_function_paginate()">smutty_function_paginate</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for drawing page links
+</p></td>
+</tr>
+<tr>
+<td class="type"> the</td>
+<td class="description"><p class="name"><a href="#smutty_function_password()">smutty_function_password</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a form password field
+</p></td>
+</tr>
+<tr>
+<td class="type"> nothing</td>
+<td class="description"><p class="name"><a href="#smutty_function_rss()">smutty_function_rss</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html to create a link to an
+ automatcically generated smutty rss feed.
+</p></td>
+</tr>
+<tr>
+<td class="type"> the</td>
+<td class="description"><p class="name"><a href="#smutty_function_select()">smutty_function_select</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a html select option
+</p></td>
+</tr>
+<tr>
+<td class="type"> the</td>
+<td class="description"><p class="name"><a href="#smutty_function_select_option()">smutty_function_select_option</a>(Object obj, String text, String value, String selected)</p><p class="description">
+ returns the html for a select option
+</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smutty_function_show_errors()">smutty_function_show_errors</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smutty_function_smutty_link()">smutty_function_smutty_link</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> the</td>
+<td class="description"><p class="name"><a href="#smutty_function_submit()">smutty_function_submit</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a form submit button
+</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smutty_function_tabgroup()">smutty_function_tabgroup</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smutty_function_tabpage()">smutty_function_tabpage</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smutty_function_tabpage_end()">smutty_function_tabpage_end</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> the</td>
+<td class="description"><p class="name"><a href="#smutty_function_textarea()">smutty_function_textarea</a>(array params, Smarty smarty)</p><p class="description">
+ returns the html for a form textarea
+</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smutty_function_url()">smutty_function_url</a>(mixed params)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#smutty_function_url_full()">smutty_function_url_full</a>(mixed params, mixed smarty)</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#stripslashes_deep()">stripslashes_deep</a>(mixed value)</p></td>
+</tr>
+<tr>
+<td class="type"> value</td>
+<td class="description"><p class="name"><a href="#v()">v</a>(mixed hash, mixed key, $key the)</p><p class="description">
+ a utility for safely extracting a value from an array
+</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#w()">w</a>(mixed hash, mixed key, $default default, $key the)</p><p class="description">
+ safely gets a value from an array, and uses the default
+ if it's not already set
+</p></td>
+</tr>
+</table>
+
+<h2 id="detail_function">Function Detail</h2>
+<h3 id="__autoload()">__autoload</h3>
+<code class="signature">public  nothing <strong>__autoload</strong>(mixed className, className the)</code>
+<div class="details">
+<p>
+ this function handles loading of smutty classes as and
+ when they're needed, but is only supported by php5 >
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>the - name of the class to load</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/__autoload/__autoload">Go to code</a><hr>
+
+<h3 id="smarty_function_ajax_libs()">smarty_function_ajax_libs</h3>
+<code class="signature">public  void <strong>smarty_function_ajax_libs</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/ajax_libs">Go to code</a><hr>
+
+<h3 id="smarty_function_button()">smarty_function_button</h3>
+<code class="signature">public  void <strong>smarty_function_button</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/button">Go to code</a><hr>
+
+<h3 id="smarty_function_checkbox()">smarty_function_checkbox</h3>
+<code class="signature">public  void <strong>smarty_function_checkbox</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/checkbox">Go to code</a><hr>
+
+<h3 id="smarty_function_datefields()">smarty_function_datefields</h3>
+<code class="signature">public  void <strong>smarty_function_datefields</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/datefields">Go to code</a><hr>
+
+<h3 id="smarty_function_draggable()">smarty_function_draggable</h3>
+<code class="signature">public  void <strong>smarty_function_draggable</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/draggable">Go to code</a><hr>
+
+<h3 id="smarty_function_droppable()">smarty_function_droppable</h3>
+<code class="signature">public  void <strong>smarty_function_droppable</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/droppable">Go to code</a><hr>
+
+<h3 id="smarty_function_field()">smarty_function_field</h3>
+<code class="signature">public  void <strong>smarty_function_field</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/field">Go to code</a><hr>
+
+<h3 id="smarty_function_form()">smarty_function_form</h3>
+<code class="signature">public  void <strong>smarty_function_form</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/form">Go to code</a><hr>
+
+<h3 id="smarty_function_form_end()">smarty_function_form_end</h3>
+<code class="signature">public  void <strong>smarty_function_form_end</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/form_end">Go to code</a><hr>
+
+<h3 id="smarty_function_hidden()">smarty_function_hidden</h3>
+<code class="signature">public  void <strong>smarty_function_hidden</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/hidden">Go to code</a><hr>
+
+<h3 id="smarty_function_javascript()">smarty_function_javascript</h3>
+<code class="signature">public  void <strong>smarty_function_javascript</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/javascript">Go to code</a><hr>
+
+<h3 id="smarty_function_label()">smarty_function_label</h3>
+<code class="signature">public  void <strong>smarty_function_label</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/label">Go to code</a><hr>
+
+<h3 id="smarty_function_link()">smarty_function_link</h3>
+<code class="signature">public  void <strong>smarty_function_link</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/link">Go to code</a><hr>
+
+<h3 id="smarty_function_linkSelect()">smarty_function_linkSelect</h3>
+<code class="signature">public  void <strong>smarty_function_linkSelect</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/linkSelect">Go to code</a><hr>
+
+<h3 id="smarty_function_notice()">smarty_function_notice</h3>
+<code class="signature">public  void <strong>smarty_function_notice</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/notice">Go to code</a><hr>
+
+<h3 id="smarty_function_paginate()">smarty_function_paginate</h3>
+<code class="signature">public  void <strong>smarty_function_paginate</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/paginate">Go to code</a><hr>
+
+<h3 id="smarty_function_password()">smarty_function_password</h3>
+<code class="signature">public  void <strong>smarty_function_password</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/password">Go to code</a><hr>
+
+<h3 id="smarty_function_rss()">smarty_function_rss</h3>
+<code class="signature">public  void <strong>smarty_function_rss</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/rss">Go to code</a><hr>
+
+<h3 id="smarty_function_select()">smarty_function_select</h3>
+<code class="signature">public  void <strong>smarty_function_select</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/select">Go to code</a><hr>
+
+<h3 id="smarty_function_show_errors()">smarty_function_show_errors</h3>
+<code class="signature">public  void <strong>smarty_function_show_errors</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/show_errors">Go to code</a><hr>
+
+<h3 id="smarty_function_smutty_link()">smarty_function_smutty_link</h3>
+<code class="signature">public  void <strong>smarty_function_smutty_link</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/smutty_link">Go to code</a><hr>
+
+<h3 id="smarty_function_submit()">smarty_function_submit</h3>
+<code class="signature">public  void <strong>smarty_function_submit</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/submit">Go to code</a><hr>
+
+<h3 id="smarty_function_tabgroup()">smarty_function_tabgroup</h3>
+<code class="signature">public  void <strong>smarty_function_tabgroup</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/tabgroup">Go to code</a><hr>
+
+<h3 id="smarty_function_tabpage()">smarty_function_tabpage</h3>
+<code class="signature">public  void <strong>smarty_function_tabpage</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/tabpage">Go to code</a><hr>
+
+<h3 id="smarty_function_tabpage_end()">smarty_function_tabpage_end</h3>
+<code class="signature">public  void <strong>smarty_function_tabpage_end</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/tabpage_end">Go to code</a><hr>
+
+<h3 id="smarty_function_textarea()">smarty_function_textarea</h3>
+<code class="signature">public  void <strong>smarty_function_textarea</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/textarea">Go to code</a><hr>
+
+<h3 id="smarty_function_url()">smarty_function_url</h3>
+<code class="signature">public  void <strong>smarty_function_url</strong>(mixed params)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/url">Go to code</a><hr>
+
+<h3 id="smarty_function_url_full()">smarty_function_url_full</h3>
+<code class="signature">public  void <strong>smarty_function_url_full</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/url_full">Go to code</a><hr>
+
+<h3 id="smarty_modifier_jsonize()">smarty_modifier_jsonize</h3>
+<code class="signature">public  void <strong>smarty_modifier_jsonize</strong>(mixed object)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/modifier/jsonize">Go to code</a><hr>
+
+<h3 id="smarty_modifier_plural()">smarty_modifier_plural</h3>
+<code class="signature">public  void <strong>smarty_modifier_plural</strong>(mixed number, mixed singular)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/modifier/plural">Go to code</a><hr>
+
+<h3 id="smarty_modifier_pluralize()">smarty_modifier_pluralize</h3>
+<code class="signature">public  void <strong>smarty_modifier_pluralize</strong>(mixed phrase)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/modifier/pluralize">Go to code</a><hr>
+
+<h3 id="smarty_prefilter_allow_assoc_attrs()">smarty_prefilter_allow_assoc_attrs</h3>
+<code class="signature">public  void <strong>smarty_prefilter_allow_assoc_attrs</strong>(mixed tpl_source, mixed smarty)</code>
+<div class="details">
+<p>
+ this filter changes all assoc array style attributes to
+ flat strings that can then be changed back by whichever
+ plugin needs to use them.</p><p>/</p>
+</div>
+
+<a href="/code/viewPlugin/prefilter/allow_assoc_attrs">Go to code</a><hr>
+
+<h3 id="smarty_prefilter_allow_assoc_attrs_replace()">smarty_prefilter_allow_assoc_attrs_replace</h3>
+<code class="signature">public  void <strong>smarty_prefilter_allow_assoc_attrs_replace</strong>(mixed varString)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/prefilter/allow_assoc_attrs_replace">Go to code</a><hr>
+
+<h3 id="smutty_error_handler()">smutty_error_handler</h3>
+<code class="signature">public  nothing <strong>smutty_error_handler</strong>(mixed errno, mixed errstr, mixed errfile, mixed errline, mixed errcon, $errno severity, $errstr description, $errcon the)</code>
+<div class="details">
+<p>
+ this is the handler for ALL errors generated when smutty
+ is running.  it overrides the default php error handler
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd></dd>
+<dd></dd>
+<dd>the - files full path</dd>
+<dd>the - line</dd>
+<dd>the - contect</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/error/handler">Go to code</a><hr>
+
+<h3 id="smutty_function_ajax_libs()">smutty_function_ajax_libs</h3>
+<code class="signature">public  void <strong>smutty_function_ajax_libs</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/ajax_libs">Go to code</a><hr>
+
+<h3 id="smutty_function_button()">smutty_function_button</h3>
+<code class="signature">public  the <strong>smutty_function_button</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a button
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - parameters</dd>
+<dd>smarty - smarty object</dd>
+<dt>Returns:</dt>
+<dd>element html</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/button">Go to code</a><hr>
+
+<h3 id="smutty_function_checkbox()">smutty_function_checkbox</h3>
+<code class="signature">public  the <strong>smutty_function_checkbox</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a form checkbox field
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - parameters</dd>
+<dd>smarty - smarty object</dd>
+<dt>Returns:</dt>
+<dd>element html</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/checkbox">Go to code</a><hr>
+
+<h3 id="smutty_function_datefields()">smutty_function_datefields</h3>
+<code class="signature">public  html <strong>smutty_function_datefields</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a set of date field selects
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - assoc array of params</dd>
+<dd>smarty - smarty object</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/datefields">Go to code</a><hr>
+
+<h3 id="smutty_function_datefields_getObjectRange()">smutty_function_datefields_getObjectRange</h3>
+<code class="signature">public  array <strong>smutty_function_datefields_getObjectRange</strong>(int min, int max)</code>
+<div class="details">
+<p>
+ returns an array of objects with they're id and name
+ attributes set to the specified range of numbers
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>min - minimum</dd>
+<dd>max - maximum</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/datefields_getObjectRange">Go to code</a><hr>
+
+<h3 id="smutty_function_draggable()">smutty_function_draggable</h3>
+<code class="signature">public  html <strong>smutty_function_draggable</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a draggable element
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - assoc array of params</dd>
+<dd>smarty - smarty object</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/draggable">Go to code</a><hr>
+
+<h3 id="smutty_function_droppable()">smutty_function_droppable</h3>
+<code class="signature">public  html <strong>smutty_function_droppable</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a droppable element
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - assoc array of params</dd>
+<dd>smarty - smarty object</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/droppable">Go to code</a><hr>
+
+<h3 id="smutty_function_field()">smutty_function_field</h3>
+<code class="signature">public  the <strong>smutty_function_field</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a form input field
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - parameters</dd>
+<dd>smarty - smarty object</dd>
+<dt>Returns:</dt>
+<dd>element html</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/field">Go to code</a><hr>
+
+<h3 id="smutty_function_form()">smutty_function_form</h3>
+<code class="signature">public  html <strong>smutty_function_form</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a form
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - assoc array of params</dd>
+<dd>smarty - smarty object</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/form">Go to code</a><hr>
+
+<h3 id="smutty_function_form_end()">smutty_function_form_end</h3>
+<code class="signature">public  void <strong>smutty_function_form_end</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/form_end">Go to code</a><hr>
+
+<h3 id="smutty_function_hidden()">smutty_function_hidden</h3>
+<code class="signature">public  the <strong>smutty_function_hidden</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a hidden form field
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - parameters</dd>
+<dd>smarty - smarty object</dd>
+<dt>Returns:</dt>
+<dd>element html</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/hidden">Go to code</a><hr>
+
+<h3 id="smutty_function_javascript()">smutty_function_javascript</h3>
+<code class="signature">public  void <strong>smutty_function_javascript</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/javascript">Go to code</a><hr>
+
+<h3 id="smutty_function_label()">smutty_function_label</h3>
+<code class="signature">public  the <strong>smutty_function_label</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a form label
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - parameters</dd>
+<dd>smarty - smarty object</dd>
+<dt>Returns:</dt>
+<dd>element html</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/label">Go to code</a><hr>
+
+<h3 id="smutty_function_link()">smutty_function_link</h3>
+<code class="signature">public  html <strong>smutty_function_link</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for an anchor element.  this could be some
+ kind of javascript/ajax call if you use the right args.
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - assoc array of params</dd>
+<dd>smarty - the smarty object</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/link">Go to code</a><hr>
+
+<h3 id="smutty_function_linkSelect()">smutty_function_linkSelect</h3>
+<code class="signature">public static  void <strong>smutty_function_linkSelect</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/linkSelect">Go to code</a><hr>
+
+<h3 id="smutty_function_linkSelectText()">smutty_function_linkSelectText</h3>
+<code class="signature">public  void <strong>smutty_function_linkSelectText</strong>(mixed params)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/linkSelectText">Go to code</a><hr>
+
+<h3 id="smutty_function_notice()">smutty_function_notice</h3>
+<code class="signature">public  html <strong>smutty_function_notice</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for displaying a brief notice on the page
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - the parameters</dd>
+<dd>smarty - the smarty object</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/notice">Go to code</a><hr>
+
+<h3 id="smutty_function_paginate()">smutty_function_paginate</h3>
+<code class="signature">public  html <strong>smutty_function_paginate</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for drawing page links
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - assoc array of params</dd>
+<dd>smarty - smarty object</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/paginate">Go to code</a><hr>
+
+<h3 id="smutty_function_password()">smutty_function_password</h3>
+<code class="signature">public  the <strong>smutty_function_password</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a form password field
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - parameters</dd>
+<dd>smarty - smarty object</dd>
+<dt>Returns:</dt>
+<dd>element html</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/password">Go to code</a><hr>
+
+<h3 id="smutty_function_rss()">smutty_function_rss</h3>
+<code class="signature">public  nothing <strong>smutty_function_rss</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html to create a link to an
+ automatcically generated smutty rss feed.
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - assoc array of params</dd>
+<dd>smarty - the smarty object</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/rss">Go to code</a><hr>
+
+<h3 id="smutty_function_select()">smutty_function_select</h3>
+<code class="signature">public  the <strong>smutty_function_select</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a html select option
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - assoc array of params</dd>
+<dd>smarty - the smarty template</dd>
+<dt>Returns:</dt>
+<dd>html</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/select">Go to code</a><hr>
+
+<h3 id="smutty_function_select_option()">smutty_function_select_option</h3>
+<code class="signature">public  the <strong>smutty_function_select_option</strong>(Object obj, String text, String value, String selected)</code>
+<div class="details">
+<p>
+ returns the html for a select option
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>obj - the object to draw</dd>
+<dd>text - the name of the objects text property</dd>
+<dd>value - the name of the objects value property</dd>
+<dd>selected - a value to select</dd>
+<dt>Returns:</dt>
+<dd>element html</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/select_option">Go to code</a><hr>
+
+<h3 id="smutty_function_show_errors()">smutty_function_show_errors</h3>
+<code class="signature">public  void <strong>smutty_function_show_errors</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/show_errors">Go to code</a><hr>
+
+<h3 id="smutty_function_smutty_link()">smutty_function_smutty_link</h3>
+<code class="signature">public  void <strong>smutty_function_smutty_link</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/smutty_link">Go to code</a><hr>
+
+<h3 id="smutty_function_submit()">smutty_function_submit</h3>
+<code class="signature">public  the <strong>smutty_function_submit</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a form submit button
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - parameters</dd>
+<dd>smarty - smarty object</dd>
+<dt>Returns:</dt>
+<dd>element html</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/submit">Go to code</a><hr>
+
+<h3 id="smutty_function_tabgroup()">smutty_function_tabgroup</h3>
+<code class="signature">public  void <strong>smutty_function_tabgroup</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/tabgroup">Go to code</a><hr>
+
+<h3 id="smutty_function_tabpage()">smutty_function_tabpage</h3>
+<code class="signature">public  void <strong>smutty_function_tabpage</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/tabpage">Go to code</a><hr>
+
+<h3 id="smutty_function_tabpage_end()">smutty_function_tabpage_end</h3>
+<code class="signature">public  void <strong>smutty_function_tabpage_end</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/tabpage_end">Go to code</a><hr>
+
+<h3 id="smutty_function_textarea()">smutty_function_textarea</h3>
+<code class="signature">public  the <strong>smutty_function_textarea</strong>(array params, Smarty smarty)</code>
+<div class="details">
+<p>
+ returns the html for a form textarea
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>params - parameters</dd>
+<dd>smarty - smarty object</dd>
+<dt>Returns:</dt>
+<dd>element html</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/function/textarea">Go to code</a><hr>
+
+<h3 id="smutty_function_url()">smutty_function_url</h3>
+<code class="signature">public  void <strong>smutty_function_url</strong>(mixed params)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/url">Go to code</a><hr>
+
+<h3 id="smutty_function_url_full()">smutty_function_url_full</h3>
+<code class="signature">public  void <strong>smutty_function_url_full</strong>(mixed params, mixed smarty)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/function/url_full">Go to code</a><hr>
+
+<h3 id="stripslashes_deep()">stripslashes_deep</h3>
+<code class="signature">public  void <strong>stripslashes_deep</strong>(mixed value)</code>
+<div class="details">
+</div>
+
+<a href="/code/viewPlugin/stripslashes_deep/stripslashes_deep">Go to code</a><hr>
+
+<h3 id="v()">v</h3>
+<code class="signature">public  value <strong>v</strong>(mixed hash, mixed key, $key the)</code>
+<div class="details">
+<p>
+ a utility for safely extracting a value from an array
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>the - (assoc) array</dd>
+<dd>the - key (index)</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/v/v">Go to code</a><hr>
+
+<h3 id="w()">w</h3>
+<code class="signature">public  string <strong>w</strong>(mixed hash, mixed key, $default default, $key the)</code>
+<div class="details">
+<p>
+ safely gets a value from an array, and uses the default
+ if it's not already set
+</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>the - array to use</dd>
+<dd>the - key to find</dd>
+<dd>default - to use</dd>
+</dl>
+</div>
+
+<a href="/code/viewPlugin/w/w">Go to code</a><hr>
+
+<div class="header">
+<h1>Smutty</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../smutty/package-summary.html">Package</a></li>
+<li class="active">Function</li>
+<li><a href="../overview-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../smutty/package-functions.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_function">Function</a>
+Detail: <a href="#detail_function">Function</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://phpdoctor.sourceforge.net/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

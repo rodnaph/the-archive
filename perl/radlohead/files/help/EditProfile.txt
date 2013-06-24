@@ -1,0 +1,54 @@
+<h2>editing a profile</h2>
+
+If you have registered a username then you can create a profile
+for it that people can then view.  To do this simply click on
+the <b>create</b> button in the profiles menu.
+
+<p>You will then be presented with a screen containing lots of
+fields where you can enter in your information.  Those fields are
+as follows.
+
+<sub>username/password</sub>
+Here you have to enter the username you want to create a profile for
+along with that usernames password.  If you don't enter the correct
+password then you will not be allowed to create your a profile.
+<help>Passwords</help>
+
+<sub>BOARD NAME</sub>
+This could be any of the board names that you use, you may have other
+profiles you want to let people know about.
+
+<sub>REAL NAME</sub>
+You can tell everyone your real name, or pretend you're father christmas.
+
+<sub>GENDER</sub>
+Man ?  Woman ?  Something else ?
+
+<sub>FROM</sub>
+Tell people where your from or where your currently living.
+
+<sub>DATE OF BIRTH</sub>
+How old are you ?
+
+<sub>email</sub>
+If you want people to be able to contact you then you can leave your
+email here.  Only put one email address in the field though otherwise
+it will not come out correctly on your profile.
+
+<sub>image of you</sub>
+If you have a picture you want to use at the top of your profile then just
+put the url <help>URLs</help> here.  You must include the http:// part at the
+start of the url, and the image must be either jpg, gif, png or bmp. <help>Hosting</help>
+
+<sub>your website</sub>
+Got a website to promote ?  Tell people about it by putting the url <help>URLs</help> into
+this field.  As with the email field, if you put ore than one url into the field
+then the link on your profile will not work correctly.
+
+<sub>STUFF</sub>
+Basically anything else you want to say.  Go crazy.
+
+<h2>content</h2>
+
+We have no control over what people put in their profiles, but if you find anything particularly
+offensive just tell us about it at <mail>complaints@radlohead.com</mail> and we'll look into it.

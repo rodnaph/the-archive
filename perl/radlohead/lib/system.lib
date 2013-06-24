@@ -1,0 +1,426 @@
+##################################################
+##################################################
+##
+##  system.lib
+##
+##################################################
+##################################################
+
+use strict;
+use FileHandle;
+use LWP::UserAgent;
+
+##################################################
+
+use constant PROFILES_DIR => BASE . "files/profiles/";
+use constant USERS_DIR => BASE . "files/users/";
+use constant TEMP_DIR => BASE . "files/temp/";
+use constant MAILBOX_DIR => BASE . "files/mailbox/";
+
+use constant USER_LOG_FILE => BASE . "files/users.log";
+
+##################################################
+##################################################
+
+my $rh_colors = {
+                  "White" => "FFFFFF",
+                  "Black" => "000000",
+                  "Turquoise" => "44EEDD",
+                  "Violet" => "EE88FF",
+                  "Shocking Pink" => "FF22AA",
+                  "Peachy" => "FFAA66",
+                  "Grey" => "888888",
+                  "Maroon" => "AA2222",
+                  "Brown" => "AA0000",
+                  "Emerald" => "00AA00",
+                  "Lime Green" => "55EE55",
+                  "Radiant Orange" => "FF6611",
+                  "Purpley" => "990099",
+                  "Lemon" => "FFCC00",
+                  "Scarlet" => "FF0000"
+                };
+
+##################################################
+##
+##  copy_file(from,to)
+##
+##################################################
+
+sub copy_file {
+
+  my ($from,$to) = @_;
+
+  my $fh_from = new FileHandle($from);
+  my $fh_to = new FileHandle($to,">");
+
+  while(my $line = <$fh_from>) {
+    print $fh_to $line;
+  }
+
+}
+
+##################################################
+##
+##  delete_file(file)
+##
+##################################################
+
+sub delete_file {
+
+  my ($file) = @_;
+
+  return unlink($file);
+
+}
+
+##################################################
+##
+##  getFilename(string, extension) : scalar
+##
+##################################################
+
+sub getFilename {
+  my $r = uc($_[0]);
+  if ($r =~ /^[A-Z]/) { $r =~ s/^(.).*/_$1_.$_[1]/; }
+  else { $r = "_0_.$_[1]"; }
+  return $r;
+}
+
+##################################################
+##
+##  getUserFile(username) : scalar
+##  getMailbox(username) : scalar
+##  getProfilename(username) : scalar
+##  get_temp(scalar) : temp_file
+##
+##################################################
+
+sub getUserFile { return USERS_DIR . getFilename($_[0], "usr"); }
+
+sub getMailbox { return MAILBOX_DIR . getFilename($_[0], "mbx"); }
+
+sub getProfilename { return PROFILES_DIR . URLEncode($_[0]) . ".nfo"; }
+
+sub get_temp { return TEMP_DIR . $_[0] . ".tmp"; }
+
+##################################################
+##
+##  getUsername($username) : scalar
+##
+##################################################
+
+sub getUsername {
+
+  my ($username) = @_;
+
+  my $fh = new FileHandle(getUserFile($username));
+  while(my $user = <$fh>) {
+    if ($user =~ /^$username:#:/i) {
+      my ($name) = split(/:#:/,$user);
+      return $name;
+    }
+  }
+
+}
+
+##################################################
+##
+##  validUser(username, password) : boolean
+##
+##################################################
+
+sub validUser {
+
+  my ($username,$password) = @_;
+
+  trim($username);
+
+  if (validUsername($username)) {
+    my $fh = new FileHandle(getUserFile($username));
+    while(<$fh>) {
+      if (/^$username:#:$password:#:/i) { return 1; }
+    }
+  }
+
+}
+
+##################################################
+##
+##  userExists(username) : boolean
+##
+##################################################
+
+sub userExists {
+
+  my ($username) = @_;
+
+  if (validUsername($username)) {
+    my $fh = new FileHandle(getUserFile($username));
+    while(<$fh>) {
+      if (/^$username:#:/i) { return 1; }
+    }
+  }
+
+}
+
+##################################################
+##
+##  validUsername(username) : boolean
+##
+##################################################
+
+sub validUsername {
+
+  my $username = $_[0];
+  $username =~ s/[A-Za-z0-9 \-!\._]//g;
+  if (length($username) > 0) { return 0; } else { return 1; }
+
+}
+
+##################################################
+##
+##  has_profile(username) : boolean
+##
+##################################################
+
+sub has_profile {
+
+  my ($username) = @_;
+
+  return (-e getProfilename($username));
+
+}
+
+##################################################
+##
+##  get_user_data(username) : data
+##
+##################################################
+
+sub get_user_data {
+
+  my ($username) = @_;
+
+  my $fh = new FileHandle(getUserFile($username));
+  while (my $user = <$fh>) {
+    if ($user =~ /^$username:#:/i) {
+      chomp($user);
+      return $user;
+    }
+  }
+
+}
+
+##################################################
+##
+##  trim(string)
+##
+##################################################
+
+sub trim {
+  local $/ = " ";
+  while(chomp($_[0])) {}
+  $_[0] = reverse($_[0]);
+  while(chomp($_[0])) {}
+  $_[0] = reverse($_[0]);
+}
+
+##################################################
+##
+##  getUserColor(username) : scalar
+##
+##################################################
+
+sub getUserColor {
+
+  my ($username) = @_;
+
+  my $fh = new FileHandle(getUserFile($username));
+  while(my $user = <$fh>) {
+    if ($user =~ /^$username:#:/i) {
+      my ($username,$password,$color) = split(/:#:/,$user);
+      chomp($color);
+      return process_color($color);
+    }
+  }
+  return "FFFFFF";
+
+}
+
+##################################################
+##
+##  process_color(color)
+##
+##################################################
+
+sub process_color {
+
+  my ($color) = @_;
+
+  if (length($color) == 3) {
+    $color =~ s/(.)/$1$1/g;
+  }
+
+  return $color;
+
+}
+
+##################################################
+##
+##  get_colors() : ra_colors
+##
+##################################################
+
+sub get_colors {
+
+  my @colors = qw(White Turquoise Violet Shocking_Pink Peachy Grey Maroon Brown Emerald Lime_Green Radiant_Orange Purpley Lemon Scarlet);
+  foreach my $color (@colors) {
+    $color =~ s/_/ /;
+  }
+  return \@colors;
+
+}
+
+##################################################
+##
+##  getColor() : scalar
+##
+##################################################
+
+sub getColor {
+
+  my ($color) = @_;
+
+  chomp($color);
+
+  if ($rh_colors->{$color}) { return $rh_colors->{$color} }
+    else { return $rh_colors->{'Black'} }
+
+}
+
+##################################################
+##
+##  changeUserColor(username,password,color)
+##
+##################################################
+
+sub changeUserColor {
+
+  my ($username,$password,$color) = @_;
+
+  my $user_file = getUserFile($username);
+  my $temp_file = get_temp("changeUserColor");
+
+  {
+
+    my $fh = new FileHandle($user_file);
+    my $fh_temp = new FileHandle($temp_file, ">");
+
+    while(my $user = <$fh>) {
+      if ($user =~ /^$username:#:/i) {
+
+        my ($username,$password,$old_color,$has_image) = split(/:#:/,$user);
+        print $fh_temp "$username:#:$password:#:$color:#:$has_image";
+
+      } else { print $fh_temp $user; }
+    }
+
+  }
+
+  copy_file($temp_file,$user_file);
+
+}
+
+##################################################
+##
+##  URLEncode(scalar) : scalar
+##
+##################################################
+
+sub URLEncode {
+
+  my $text = shift;
+  $text =~ s/([^a-z0-9_.~-])/ sprintf "%%%02X", ord($1)/eig;
+  return $text;
+
+}
+
+##################################################
+##
+##  URLDecode(scalar) : scalar
+##
+##################################################
+
+sub URLDecode {
+
+  my $r = $_[0];
+  $r =~ tr/+/ /;
+  $r =~ s/%([\dA-Fa-f][\dA-Fa-f])/pack("C",hex($1))/eg;
+  return $r;
+
+}
+
+##################################################
+##
+##  get_file_order()
+##
+##################################################
+
+sub get_file_order {
+
+  return qw(board_name real_name gender from dob email image website stuff);
+
+}
+
+##################################################
+##
+##  valid_image(url) : boolean
+##
+##################################################
+
+sub valid_image {
+
+  my ( $url, $timeout ) = @_;
+
+  $timeout = 15 unless $timeout;
+
+  my $ua = new LWP::UserAgent();
+  $ua->timeout( $timeout );
+  my $req = new HTTP::Request( 'GET', $url );
+  my $res = $ua->request( $req );
+
+  return $res->is_success();
+}
+
+##################################################
+##
+##  get_random_file(directory,url,mask) : file_url
+##
+##################################################
+
+sub get_random_file {
+
+  my ($dir,$url,$mask) = @_;
+
+  my $i = 0;
+  my $file;
+
+  local *DIR, $_;
+
+  opendir DIR, $dir;
+  while( defined($_ = readdir DIR) ) {
+    /$mask/o or next if defined $mask;
+    rand ++$i < 1 and $file = $_;
+  }
+  closedir DIR;
+
+  return $url . $file;
+
+}
+
+##################################################
+
+1;
+
+##################################################
+##################################################

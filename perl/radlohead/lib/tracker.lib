@@ -1,0 +1,109 @@
+#############################################################
+#############################################################
+##
+##  tracker.lib
+##
+#############################################################
+#############################################################
+
+use strict;
+
+#############################################################
+
+use constant TRACKER_FILE => BASE . "files/tracker/log";
+use constant S => ":#:";
+
+#############################################################
+
+my %db;
+
+#############################################################
+#############################################################
+
+#############################################################
+##
+##  get_tracker_log() : (rh_tracker_log,start_date,hits)
+##
+#############################################################
+
+sub get_tracker_log {
+
+  my %log;
+
+  open_db();
+  foreach my $key (keys %db) {
+
+    if ($key != /(START_DATE|HITS)/) {
+
+      my ($remote_addr,$remote_host,$http_user_agent) = split(/:#:/,$db{$key});
+
+      if (defined($log{$remote_addr})) {
+
+        my ($hits) = split(/:#:/,$log{$remote_addr});
+        $log{$remote_addr} = ++$hits . S .
+                             $remote_host . S .
+                             $http_user_agent;
+
+      } else {
+        $log{$remote_addr} = 1 . S .
+                             $remote_host . S . 
+                             $http_user_agent;
+      }
+
+    }
+
+  }
+  my ($start_date,$hits) = ($db{'START_DATE'},$db{'HITS'});
+  close_db();
+
+  return (\%log,$start_date,$hits);
+
+}
+
+#############################################################
+##
+##  track_hit()
+##
+#############################################################
+
+sub track_hit {
+
+  my $track_string = $ENV{'REMOTE_ADDR'} . S .
+                     $ENV{'REMOTE_HOST'} . S .
+                     $ENV{'HTTP_USER_AGENT'};
+
+  open_db();
+  $db{++$db{'HITS'}} = $track_string;
+  close_db();
+
+}
+
+#############################################################
+##
+##  open_db();
+##  close_db();
+##  reset_db();
+##
+#############################################################
+
+sub open_db { dbmopen %db, TRACKER_FILE, 0666; }
+
+sub close_db { dbmclose %db; }
+
+sub reset_db {
+
+  open_db();
+
+  undef %db;
+  $db{'START_DATE'} = gmtime(time);
+  $db{'HITS'} = 0;
+
+  close_db();
+
+}
+
+#############################################################
+
+1;
+
+#############################################################

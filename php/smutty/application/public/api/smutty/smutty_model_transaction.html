@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+<meta name="when" content="Wed, 18 Apr 2007 22:57:57 +0900">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>Smutty_Model_Transaction (Smutty)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Smutty</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../smutty/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../smutty/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../smutty/smutty_model_transaction.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+View: <a href="/code/viewClass/Smutty_Model_Transaction">Source Code</a>
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">Smutty.Smutty_Model_Transaction</div>
+
+<h1>Class Smutty_Model_Transaction</h1>
+
+<pre class="tree"><a href="../smutty/smutty_object.html">Smutty_Object</a><br>  |<br>  +--<strong>Smutty_Model_Transaction</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>Smutty_Model_Transaction</strong><br>extends <a href="../smutty/smutty_object.html">Smutty_Object</a>
+
+</p>
+
+<div class="comment" id="overview_description"><p>
+ this class allows models to be grouped together into a
+ "transaction", which means you can deal with them as
+ a single unit rather than saving/validating them
+ all individually.</p><p>/</p></div>
+
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type"> mixed</td>
+<td class="description"><p class="name"><a href="#errors">$errors</a></p><p class="description">any errors found */</p></td>
+</tr>
+<tr>
+<td class="type"> mixed</td>
+<td class="description"><p class="name"><a href="#models">$models</a></p><p class="description">the transactions models */</p></td>
+</tr>
+</table>
+
+<table id="summary_constr">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="description"><p class="name"><a href="#Smutty_Model_Transaction()">Smutty_Model_Transaction</a>()</p><p class="description">
+ constructor
+</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> nothing</td>
+<td class="description"><p class="name"><a href="#add()">add</a>(<a href="../smutty/smutty_model.html">Smutty_Model</a> model)</p><p class="description">
+ adds a model to the transaction
+</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getErrors()">getErrors</a>()</p><p class="description">
+ returns any errors found when trying to save the transaction
+</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#isValid()">isValid</a>()</p><p class="description">
+ checks if all the models in the transaction are valid
+</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#save()">save</a>()</p><p class="description">
+ checks all the models in the transaction for validity
+ before saving them.
+</p></td>
+</tr>
+</table>
+
+<h2 id="detail_field">Field Detail</h2>
+<h3 id="errors">errors</h3>
+<code class="signature">public  mixed <strong>$errors</strong></code>
+<div class="details">
+<p>any errors found */</p></div>
+
+<hr>
+
+<h3 id="models">models</h3>
+<code class="signature">public  mixed <strong>$models</strong></code>
+<div class="details">
+<p>the transactions models */</p></div>
+
+<hr>
+
+<h2 id="detail_constr">Constructor Detail</h2>
+<h3 id="Smutty_Model_Transaction()">Smutty_Model_Transaction</h3>
+<code class="signature">public <strong>Smutty_Model_Transaction</strong>()</code>
+<div class="details">
+<p>
+ constructor
+</p></div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="add()">add</h3>
+<code class="signature">public  nothing <strong>add</strong>(<a href="../smutty/smutty_model.html">Smutty_Model</a> model)</code>
+<div class="details">
+<p>
+ adds a model to the transaction
+</p><dl>
+<dt>Parameters:</dt>
+<dd>model - model to add</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Model_Transaction#add">Go to code</a><hr>
+
+<h3 id="getErrors()">getErrors</h3>
+<code class="signature">public  array <strong>getErrors</strong>()</code>
+<div class="details">
+<p>
+ returns any errors found when trying to save the transaction
+</p><dl>
+<dt>Returns:</dt>
+<dd>array of error strings</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Model_Transaction#getErrors">Go to code</a><hr>
+
+<h3 id="isValid()">isValid</h3>
+<code class="signature">public  boolean <strong>isValid</strong>()</code>
+<div class="details">
+<p>
+ checks if all the models in the transaction are valid
+</p><dl>
+<dt>Returns:</dt>
+<dd>transaction validity</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Model_Transaction#isValid">Go to code</a><hr>
+
+<h3 id="save()">save</h3>
+<code class="signature">public  boolean <strong>save</strong>()</code>
+<div class="details">
+<p>
+ checks all the models in the transaction for validity
+ before saving them.
+</p><dl>
+<dt>Returns:</dt>
+<dd>if transaction saved</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Model_Transaction#save">Go to code</a><hr>
+
+<div class="header">
+<h1>Smutty</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../smutty/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../smutty/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../smutty/smutty_model_transaction.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+View: <a href="/code/viewClass/Smutty_Model_Transaction">Source Code</a>
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://phpdoctor.sourceforge.net/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+<meta name="when" content="Wed, 18 Apr 2007 22:57:57 +0900">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>Smutty_Router (Smutty)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Smutty</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../smutty/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../smutty/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../smutty/smutty_router.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+View: <a href="/code/viewClass/Smutty_Router">Source Code</a>
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">Smutty.Smutty_Router</div>
+
+<h1>Class Smutty_Router</h1>
+
+<pre class="tree"><a href="../smutty/smutty_object.html">Smutty_Object</a><br>  |<br>  +--<strong>Smutty_Router</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>Smutty_Router</strong><br>extends <a href="../smutty/smutty_object.html">Smutty_Object</a>
+
+</p>
+
+<div class="comment" id="overview_description"><p>
+ this class handles dispatching of requests via the correct
+ controller and action.</p><p>/</p></div>
+
+<hr>
+
+<table id="summary_constr">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="description"><p class="name"><a href="#Smutty_Router()">Smutty_Router</a>()</p><p class="description">
+ contructor.
+</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> nothing</td>
+<td class="description"><p class="name"><a href="#dispatch()">dispatch</a>()</p><p class="description">
+ dispatches the request.
+</p></td>
+</tr>
+<tr>
+<td class="type"> String</td>
+<td class="description"><p class="name"><a href="#getActionName()">getActionName</a>()</p><p class="description">
+ returns the current action
+</p></td>
+</tr>
+<tr>
+<td class="type"> String</td>
+<td class="description"><p class="name"><a href="#getControllerName()">getControllerName</a>()</p><p class="description">
+ returns the name of the current controller
+</p></td>
+</tr>
+<tr>
+<td class="type"> String</td>
+<td class="description"><p class="name"><a href="#getDefaultActionName()">getDefaultActionName</a>()</p><p class="description">
+ returns the name of the default action
+</p></td>
+</tr>
+<tr>
+<td class="type"> String</td>
+<td class="description"><p class="name"><a href="#getDefaultControllerName()">getDefaultControllerName</a>()</p><p class="description">
+ returns the name of the default controller
+</p></td>
+</tr>
+<tr>
+<td class="type">static  <a href="../smutty/smutty_router.html">Smutty_Router</a></td>
+<td class="description"><p class="name"><a href="#getInstance()">getInstance</a>()</p><p class="description">
+ returns the singleton instance of this class
+</p></td>
+</tr>
+<tr>
+<td class="type">static  String</td>
+<td class="description"><p class="name"><a href="#getRouteSpec()">getRouteSpec</a>(String ctl, String act)</p><p class="description">
+ this function searches the application config trying
+ to match a route. </p></td>
+</tr>
+<tr>
+<td class="type">static  boolean</td>
+<td class="description"><p class="name"><a href="#isValidControllerName()">isValidControllerName</a>(String name)</p><p class="description">
+ tests if a given controller name is valid
+</p></td>
+</tr>
+<tr>
+<td class="type">private  nothing</td>
+<td class="description"><p class="name"><a href="#processRoute()">processRoute</a>(String spec, array url)</p><p class="description">
+ this function process the route definition and sets
+ the values accordingly. </p></td>
+</tr>
+<tr>
+<td class="type"> nothing</td>
+<td class="description"><p class="name"><a href="#setActionName()">setActionName</a>(String name)</p><p class="description">
+ sets the current action name
+</p></td>
+</tr>
+</table>
+
+<h2 id="detail_constr">Constructor Detail</h2>
+<h3 id="Smutty_Router()">Smutty_Router</h3>
+<code class="signature">public <strong>Smutty_Router</strong>()</code>
+<div class="details">
+<p>
+ contructor.
+</p></div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="dispatch()">dispatch</h3>
+<code class="signature">public  nothing <strong>dispatch</strong>()</code>
+<div class="details">
+<p>
+ dispatches the request.
+</p></div>
+
+<a href="/code/viewClass/Smutty_Router#dispatch">Go to code</a><hr>
+
+<h3 id="getActionName()">getActionName</h3>
+<code class="signature">public  String <strong>getActionName</strong>()</code>
+<div class="details">
+<p>
+ returns the current action
+</p><dl>
+<dt>Returns:</dt>
+<dd>current action name</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Router#getActionName">Go to code</a><hr>
+
+<h3 id="getControllerName()">getControllerName</h3>
+<code class="signature">public  String <strong>getControllerName</strong>()</code>
+<div class="details">
+<p>
+ returns the name of the current controller
+</p><dl>
+<dt>Returns:</dt>
+<dd>current controller name</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Router#getControllerName">Go to code</a><hr>
+
+<h3 id="getDefaultActionName()">getDefaultActionName</h3>
+<code class="signature">public  String <strong>getDefaultActionName</strong>()</code>
+<div class="details">
+<p>
+ returns the name of the default action
+</p><dl>
+<dt>Returns:</dt>
+<dd>default action</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Router#getDefaultActionName">Go to code</a><hr>
+
+<h3 id="getDefaultControllerName()">getDefaultControllerName</h3>
+<code class="signature">public  String <strong>getDefaultControllerName</strong>()</code>
+<div class="details">
+<p>
+ returns the name of the default controller
+</p><dl>
+<dt>Returns:</dt>
+<dd>default controller</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Router#getDefaultControllerName">Go to code</a><hr>
+
+<h3 id="getInstance()">getInstance</h3>
+<code class="signature">public static  <a href="../smutty/smutty_router.html">Smutty_Router</a> <strong>getInstance</strong>()</code>
+<div class="details">
+<p>
+ returns the singleton instance of this class
+</p><dl>
+<dt>Returns:</dt>
+<dd>the singleton</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Router#getInstance">Go to code</a><hr>
+
+<h3 id="getRouteSpec()">getRouteSpec</h3>
+<code class="signature">public static  String <strong>getRouteSpec</strong>(String ctl, String act)</code>
+<div class="details">
+<p>
+ this function searches the application config trying
+ to match a route.  if none is found then the default
+ route will be returned.  you can specify a controller
+ and action to find routes bound to them.
+</p><dl>
+<dt>Parameters:</dt>
+<dd>ctl - optional controller name</dd>
+<dd>act - optional action name</dd>
+<dt>Returns:</dt>
+<dd>the route url</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Router#getRouteSpec">Go to code</a><hr>
+
+<h3 id="isValidControllerName()">isValidControllerName</h3>
+<code class="signature">public static  boolean <strong>isValidControllerName</strong>(String name)</code>
+<div class="details">
+<p>
+ tests if a given controller name is valid
+</p><dl>
+<dt>Parameters:</dt>
+<dd>name - the name to test</dd>
+<dt>Returns:</dt>
+<dd>indicating validity</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Router#isValidControllerName">Go to code</a><hr>
+
+<h3 id="processRoute()">processRoute</h3>
+<code class="signature">private  nothing <strong>processRoute</strong>(String spec, array url)</code>
+<div class="details">
+<p>
+ this function process the route definition and sets
+ the values accordingly.  the name "action" is
+ special and changes the current value.
+</p><dl>
+<dt>Parameters:</dt>
+<dd>spec - spec string</dd>
+<dd>url - array of url parts</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Router#processRoute">Go to code</a><hr>
+
+<h3 id="setActionName()">setActionName</h3>
+<code class="signature">public  nothing <strong>setActionName</strong>(String name)</code>
+<div class="details">
+<p>
+ sets the current action name
+</p><dl>
+<dt>Parameters:</dt>
+<dd>name - the action name</dd>
+</dl>
+</div>
+
+<a href="/code/viewClass/Smutty_Router#setActionName">Go to code</a><hr>
+
+<div class="header">
+<h1>Smutty</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../smutty/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../smutty/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../smutty/smutty_router.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+View: <a href="/code/viewClass/Smutty_Router">Source Code</a>
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://phpdoctor.sourceforge.net/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

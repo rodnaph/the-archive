@@ -1,0 +1,948 @@
+##################################################
+##################################################
+##
+##  output.lib
+##
+##################################################
+##################################################
+
+use strict;
+
+use constant HIT_COUNTER => "hits";
+use constant USER_COUNTER => "users";
+use constant REFERER_LOG => BASE . 'files/logs/referer.log';
+use constant LOGO_DIR => BASE . "files/images/logos/";
+
+use constant MENU_COLOR => "FF0000";
+use constant FONT_STRING => "arial,helvetica,verdana";
+
+use CGI;
+use FileHandle qw( print );
+
+##################################################
+
+require(BASE . "lib/forms.lib");
+require(BASE . "lib/counter.lib");
+require(BASE . "lib/system.lib");
+require(BASE . 'lib/quickchat.lib');
+
+##################################################
+
+my $MENU_COLOR = MENU_COLOR;
+my $FONT_STRING = FONT_STRING;
+my $stylesheet = get_stylesheet();
+my $url_base = get_url_base();
+
+##################################################
+##
+##  header( title, rh_mailbox_info, cookie )
+##
+##################################################
+
+sub header {
+
+  my ( $title, $rh_mailbox_info, $cookie ) = @_;
+
+  # logging
+#  my $fh = new FileHandle( REFERER_LOG, '>>' );
+#  $fh->print( "$ENV{HTTP_REFERER}\n" );
+#  $fh->close();
+
+  ##
+  ##  set variables...
+  ##
+
+  my $q = new CGI;
+
+  my $rh_menu_actions = create_menu_actions(["Profiles","Mailbox","Birthdays","Pages","Msgboard","Other"]);
+
+  $title = "- " . $title unless !$title;
+
+  my $on_click = "onclick=\"objMenuArray.hideAll()\"" unless (get_browser_name() ne "ie");
+
+  my $mailbox_menu = ",objMenuArray.hideAll()";
+  ($mailbox_menu, my $mailbox_script) = build_mailbox_menu($rh_mailbox_info) unless !$rh_mailbox_info;
+
+  my $clock_tag = "layer";
+  $clock_tag = "span" unless (get_browser_name() eq "nn");
+
+  my $logo_url = get_random_file(LOGO_DIR,$url_base . "/files/images/logos/",'\\.(png|gif|jpg)$');
+
+  ##
+  ##  output html...
+  ##
+
+  print $q->header( -type => 'text/html', -cookie => [ $cookie ] );
+
+  print <<EOT;
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>RADlOHEAD $title</title>
+
+<meta http-equiv="Pragma" content="no-cache" />
+
+<link href="$url_base/files/css/$stylesheet" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+A { text-decoration:none; }
+.mainMenu { behavior: url($url_base/files/htc/MainMenu.htc); }
+P, TD, H2 { font-family:arial,helvetica,verdana; }
+T, TD { font-size:10pt; }
+
+</style>
+
+EOT
+
+  ##
+  ##  include javascript files...
+  ##
+
+  include_js(['Browsers','globalFunctions','frameControl','webring','preLoader','imageControl','Menu','Clock']);
+
+  ##
+  ##  output html...
+  ##
+
+  print <<EOT;
+
+<script language="javascript" type="text/javascript">
+
+$mailbox_script
+objMenuArray.add(objMenuMailbox);
+
+objMenuArray.build();
+
+function initialize() {
+  startClock();
+  detectFrames();
+}
+
+</script>
+
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF" link="#FFFFFF" vlink="#FFFFFF" $on_click onload="initialize()" background="$url_base/files/images/site/back.gif">
+
+<table width="100%" cellspacing="1" cellpadding="0" border="0">
+  <tr>
+    <td height="50" bgcolor="#$MENU_COLOR">
+
+      <table width="100%">
+        <tr>
+
+          <td>
+            &nbsp;
+            <a href="$url_base/01.pl" target="_top">
+            <img src="$logo_url" width="40" border="0" alt="radLohead logo" />
+            </a>
+          </td>
+
+          <td width="300">
+            <img src="$url_base/files/images/menu_info/blank.gif" name="menu_info" width="300" height="40" alt="menu information" />
+          </td>
+
+          <td align="right">
+            <img src="$url_base/files/images/site/mainlogo.gif" height="40" width="250" alt="radlohead.com" />
+          </td>
+
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#FF0000" height="25">
+
+      <table width="100%">
+        <tr>
+          <td>
+
+            <$clock_tag id="clock"></$clock_tag>
+
+          </td>
+          <td align="right">
+
+            <img name="menu_image" src="$url_base/files/images/menu/menu_image.gif" width="600" height="25" border="0" usemap="#m_menu_image" alt="radLohead main menu" />
+            <map name="m_menu_image" id="m_menu_image">
+              <area shape="rect" coords="539,3,587,23" href="$url_base/03.pl" $rh_menu_actions->{'Other'} alt="Other menu" />
+              <area shape="rect" coords="447,3,536,25" href="$url_base/msgboard" $rh_menu_actions->{'Msgboard'} alt="Msgboard menu" />
+              <area shape="rect" coords="389,3,444,24" href="$url_base/11.pl" $rh_menu_actions->{'Pages'} alt="Pages menu" />
+              <area shape="rect" coords="304,3,387,24" href="$url_base/08.pl" $rh_menu_actions->{'Birthdays'} alt="Birthdays menu" />
+              <area shape="rect" coords="231,3,301,24" href="$url_base/09.pl" $rh_menu_actions->{'Mailbox'} alt="Mailbox menu" />
+              <area shape="rect" coords="161,4,227,24" href="$url_base/04.pl" $rh_menu_actions->{'Profiles'} alt="Profiles menu" />
+            </map>
+
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+EOT
+
+}
+
+##################################################
+##
+##  create_menu_actions(ra_items) : rh_menu_actions
+##
+##################################################
+
+sub create_menu_actions {
+
+  my ($ra_items) = @_;
+
+  my $rh_actions;
+
+  foreach my $item (@$ra_items) {
+
+    if (get_browser_name() eq "ie") {
+      $rh_actions->{$item} = "class=\"mainMenu\" object_name=\"$item\"";
+    } else {
+      $rh_actions->{$item} = "onmouseover=\"swapMenu('$item'),objMenu$item.show()\" onmouseout=\"resetMenu()\"";
+    }
+
+  }
+
+  return $rh_actions;
+
+}
+
+##################################################
+##
+##  build_mailbox_menu(rh_mailbox_info) : (mailbox_menu,mailbox_script)
+##
+##################################################
+
+sub build_mailbox_menu {
+
+  my ($rh_mailbox_info) = @_;
+  my ($mailbox_menu,$mailbox_script);
+
+  my $mailbox_menu = ",objMenuMailbox.show()";
+  my $mailbox_script = "objMenuMailbox.seperator();\n";
+
+  my $actions = $rh_mailbox_info->{'ACTIONS'};
+  foreach my $action (@$actions) {
+
+    $mailbox_script .= "objMenuMailbox.add('$action','09.pl?" .
+                       "todo=$action&" .
+                       "username=$rh_mailbox_info->{'USERNAME'}&" .
+                       "password=$rh_mailbox_info->{'PASSWORD'}" .
+                       "');\n";
+
+  }
+
+  return ($mailbox_menu,$mailbox_script);
+
+}
+
+##################################################
+##
+##  footer(do_inc_counter)
+##
+##################################################
+
+sub footer {
+
+  my ($do_inc_counter) = @_;
+  my $q = new CGI;
+
+  if ($do_inc_counter) { inc_counter(HIT_COUNTER); }
+
+  my $userCount = get_counter(USER_COUNTER);
+  my $hitCount = get_counter(HIT_COUNTER);
+
+  print <<EOT;
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+
+     <table width="100%">
+      <tr>
+       <td>
+
+        <br /><br /><br /><br />
+
+        @{[ get_chat_box() ]}
+
+       </td>
+       <td align="right" valign="bottom">
+
+        <p>
+        <a href="http://www.perl.com" target="_blank"><img
+          src="$url_base/files/images/site/power_perl.gif"
+          alt="Powered by Perl" height="31" width="88" border="0" /></a>
+
+        <br />
+
+        <a href="http://www.ill-odium.co.uk" target="_blank"><img
+          src="$url_base/files/images/site/smlogo.gif"
+          alt="Programmed by JAPH" height="31" width="88" border="0" /></a>
+        </p>
+
+       </td>
+      </tr>
+     </table>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#$MENU_COLOR">
+
+      <table width="100%">
+        <tr>
+          <td>
+
+            <b style="font-size:12pt;">
+            &nbsp;$hitCount hits
+            </b>
+
+          </td>
+          <td align="right">
+
+            <b style="font-size:12pt;">
+            $userCount users&nbsp;
+            </b>
+
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+<p align="center" style="font-size: 8pt;">
+
+[
+<a href="http://www.radiohead.com" target="_blank">radiohead</a> | 
+<a href="http://www.followmearound.com" target="_blank">follow me around</a> |
+<a href="http://www.greenplastic.com" target="_blank">green plastic</a> |
+<a href="http://www.climbingupthewalls.com" target="_blank">climbing up the walls</a>
+]
+
+<br />programmed by m0ren0 for the rhmb
+<br />radlohead.com&#153;
+
+<br /><br />
+[
+<a href="http://www.radlohead.com/webring/webring.pl?todo=prev&id=15" target="_top">prev</a> |
+<a href="http://www.radlohead.com/webring/webring.pl?todo=random" target="_top">random</a> |
+<a href="http://www.radlohead.com/webring/webring.pl">join</a> |
+<a href="http://www.radlohead.com/webring/webring.pl?todo=list" target="_top">list</a> |
+<a href="http://www.radlohead.com/webring/webring.pl?todo=next&id=15" target="_top">next</a>
+]
+
+</p>
+
+</body>
+</html>
+EOT
+}
+
+##################################################
+##
+##  user_html(username,query_string,user_data) : scalar
+##
+##################################################
+
+sub user_html {
+
+  my ($username,$query_string,$user_data) = @_;
+  chomp($username);
+
+  $user_data = get_user_data($username) unless $user_data;
+  my ($html) = undef;
+
+  my ($name, $pass, $color, $has_image) = split(/:#:/, $user_data);
+  my ($profile,$openBold,$closeBold) = (URLEncode($name),"<b>","</b>");
+
+  my ($has_image_pic);
+  if (!has_profile($name)) {
+    ($openBold,$closeBold) = ("<i>","</i>");
+  } else {
+    if ($has_image) {
+      $has_image_pic = "&nbsp;<a href=\"javascript:showUserImage('$profile')\"><img border=\"0\" src=\"$url_base/files/images/site/has_image.gif\" width=\"12\" height=\"12\" alt=\"click to view\" /></a>";
+    }
+  }
+
+  if ($color eq "000000") { $color = "FFFFFF"; }
+
+  $html .= "$openBold<a class=\"profile_link\" href=\"$url_base/07.pl?profile=$profile$query_string\">";
+  $html .= "<font color=\"#" . process_color($color) . "\">$name</font>";
+  $html .= "</a>$closeBold$has_image_pic";
+
+  return ($html);
+
+}
+
+##################################################
+##
+##  print_user_data(user_data,indent,query_string)
+##
+##################################################
+
+sub print_user_data {
+
+  my ($user_data,$indent,$query_string) = @_;
+
+  my ($username) = split(/:#:/,$user_data);
+  print_user($username,$indent,$query_string,$user_data);
+
+}
+
+##################################################
+##
+##  print_user(username,indent,query_string,user_data)
+##
+##################################################
+
+sub print_user {
+
+  my ($username,$indent,$query_string,$user_data) = @_;
+
+  print_text(user_html($username,$query_string,$user_data),$indent);
+
+}
+
+##################################################
+##
+##  print_submit(text)
+##
+##################################################
+
+sub print_submit {
+
+  my ($text) = @_;
+
+  print_text("<b><font color=\"#AAAAFF\">" . uc($text) . "</font></b>");
+
+}
+
+##################################################
+##
+##  open_tr()
+##
+##################################################
+
+sub open_tr {
+
+  my $td_height = " height=\"400\"";
+  $td_height = " height=\"66%\"" unless (get_browser_name() eq "ie");
+
+  print <<EOT;
+  <tr>
+    <td$td_height>
+
+      <br />
+
+EOT
+
+}
+
+##################################################
+##
+##  print_html(html,extra_indent)
+##
+##################################################
+
+sub print_html {
+
+  my ($html,$extra_indent) = @_;
+
+  my @lines = split(/\n/,$html);
+
+  my $indent = "      ";
+  for my $i(1..$extra_indent) {
+    $indent .= " ";
+  }
+
+  foreach my $line (@lines) {
+  print <<EOT;
+$indent$line
+EOT
+  }
+
+}
+
+##################################################
+##
+##  help_html(topic)
+##
+##################################################
+
+sub help_html {
+
+  my ($topic) = @_;
+
+  return "<a href=\"$url_base/15.pl?topic=$topic\"><img src=\"$url_base/files/images/site/help.gif\" width=\"12\" height=\"12\" border=\"0\" /></a>";
+
+}
+##################################################
+##
+##  print_help(topic)
+##
+##################################################
+
+sub print_help {
+
+  my ($topic) = @_;
+
+  print_html(help_html($topic));
+
+}
+
+##################################################
+##
+##  print_text(text,extra_indent)
+##
+##################################################
+
+sub print_text {
+
+  my ($text,$extra_indent) = @_;
+
+  my $indent = "      ";
+  for my $i(1..$extra_indent) {
+    $indent .= " ";
+  }
+
+  print <<EOT;
+$indent
+EOT
+
+  print_html($text,$extra_indent);
+
+  print <<EOT;
+$indent
+EOT
+
+}
+
+##################################################
+##
+##  select_field(name,rs_list_sub,ra_sub_args,label,onChange)
+##
+##################################################
+
+sub select_field {
+
+  my ($name,$rs_list_sub,$ra_sub_args,$label,$onChange) = @_;
+
+  $label = $name unless $label;
+
+  print_html("<tr><td align=\"right\">");
+  print_text("<b>$label</b>",2);
+  print_html("</td><td>");
+  print_html("<select name=\"$name\" onchange=\"$onChange\">");
+
+  &$rs_list_sub(@$ra_sub_args);
+
+  print_html("</select>\n</td></tr>");
+
+}
+
+##################################################
+##
+##  seperator($text)
+##
+##################################################
+
+sub seperator {
+
+  my ($text) = @_;
+
+  print <<EOT;
+      <br /><br />
+
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#$MENU_COLOR">
+      &nbsp;<b>
+EOT
+
+  print_text($text);
+
+  print <<EOT;
+      </b>
+
+    </td>
+  </tr>
+EOT
+
+  open_tr();
+
+}
+
+##################################################
+##
+##  heading(title)
+##
+##################################################
+
+sub heading {
+
+  my ($title) = @_;
+
+  print <<EOT;
+      <h2>$title</h2>
+EOT
+
+}
+
+##################################################
+##
+##  top_menu(rh_menu)
+##
+##################################################
+
+sub top_menu {
+
+  my ($rh_menu) = @_;
+
+  print "  <tr>";
+
+  $rh_menu->{'ALIGN'} = "left" unless $rh_menu->{'ALIGN'};
+  my $url_base = get_url_base() . "/";
+  $url_base = "" unless !$rh_menu->{'NO_BASE'};
+
+  print <<EOT;
+
+    <td bgcolor="#$MENU_COLOR" align="$rh_menu->{'ALIGN'}">
+
+        <table>
+          <tr>
+            <td>
+
+              <b><font face="$FONT_STRING" size="3">
+              &nbsp;
+
+EOT
+
+  ##
+  ##  add menu items
+  ##
+
+  my $ra_items = $rh_menu->{'ITEMS'};
+
+  foreach my $ra_item (@$ra_items) {
+    my ($url,$link,$image) = @$ra_item;
+
+    my $mouse_over_code = " onmouseover=\"javascript:swapImage($image)\" onmouseout=\"javascript:resetImage()\"" unless (!$image);
+
+    print <<EOT;
+              <a class="menuItem" href="$url_base$rh_menu->{'SECTION'}$url"$mouse_over_code>$link</a>
+EOT
+  }
+
+  print <<EOT;
+              &nbsp;
+
+              </font></b>
+
+            </td>
+          </tr>
+        </table>
+
+    </td>
+EOT
+
+  print "  </tr>\n";
+
+}
+
+##################################################
+##
+##  print_option(text,value,selected)
+##
+##################################################
+
+sub print_option {
+
+  my ($text,$value,$selected) = @_;
+
+  $selected = " selected=\"selected\"" unless !$selected;
+
+  print_html("<option value=\"$value\"$selected>$text</option>",4);
+
+}
+
+##################################################
+##
+##  start_box()
+##
+##################################################
+
+sub start_box {
+
+  my ( $title ) = @_;
+
+  my $width = '100%';
+  $width = '700' unless (get_browser_name() ne 'nn');
+
+  my $html = <<EOT;
+
+<table cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td width="15"><img src="$url_base/files/images/boxes/topleft.gif" alt="" /></td>
+    <td width="$width" background="$url_base/files/images/boxes/horitop.gif"></td>
+    <td width="15"><img src="$url_base/files/images/boxes/topright.gif" alt="" /></td>
+  </tr>
+  <tr>
+    <td width="15" background="$url_base/files/images/boxes/vertleft.gif">&nbsp;</td>
+    <td width="$width">
+      <span style="font-size:16pt;">$title</span><br />&nbsp;
+    </td>
+    <td width="15" background="$url_base/files/images/boxes/vertright.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="15"><img src="$url_base/files/images/boxes/midleft.gif" alt="" /></td>
+    <td width="$width" background="$url_base/files/images/boxes/horitop.gif"></td>
+    <td width="15"><img src="$url_base/files/images/boxes/midright.gif" alt="" /></td>
+  </tr>
+  <tr>
+    <td width="15" background="$url_base/files/images/boxes/vertleft.gif">&nbsp;</td>
+
+    <td width="100%">
+      <table width="100%" cellpadding="10"><tr><td>
+
+EOT
+
+  print_html( $html );
+
+}
+
+##################################################
+##
+##  end_box()
+##
+##################################################
+
+sub end_box {
+
+  my $width = '100%';
+  $width = '750' unless (get_browser_name() ne 'nn');
+
+  my $html = <<EOT;
+
+      </td></tr></table>
+    </td>
+
+    <td width="15" background="$url_base/files/images/boxes/vertright.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="15"><img src="$url_base/files/images/boxes/botleft.gif" alt="" /></td>
+    <td width="$width" background="$url_base/files/images/boxes/horibot.gif"></td>
+    <td width="15"><img src="$url_base/files/images/boxes/botright.gif" alt="" /></td>
+  </tr>      
+</table>
+
+<br />
+
+EOT
+
+  print_html( $html );
+
+}
+
+##################################################
+##
+##  print_box( title, text )
+##
+##################################################
+
+sub print_box {
+
+  my ( $title, $text ) = @_;
+
+  start_box( $title );
+  print_text( $text );
+  end_box();
+
+}
+
+##################################################
+##
+##  list_colors(ra_colors)
+##
+##################################################
+
+sub list_colors {
+
+  my ($ra_colors) = @_;
+
+  foreach my $color (@$ra_colors) {
+    print_option($color,$color);
+  }
+
+}
+
+##################################################
+##
+##  list_alphabet(select_letter)
+##
+##################################################
+
+sub list_alphabet {
+
+  my ($select_letter) = @_;
+
+  if (!$select_letter) { print_option("",""); }
+
+  for (my $i=ord("A"); $i lt (ord("Z")+1); $i++) {
+    my $selected;
+    if ($i eq ord($select_letter)) { $selected = 1; }
+
+    print_option(chr($i),chr($i),$selected);
+  }
+
+}
+
+##################################################
+##
+##  print_comments( for )
+##
+##################################################
+
+sub print_comments {
+
+  my ( $for ) = @_;
+
+  $for = URLEncode( $for );
+
+  my $text = <<EOT;
+
+<p align="right">
+
+<table cellpadding="0" cellspacing="0" border="0"><tr bgcolor="#ff0000"><td>
+ <table width="100%" cellpadding="3" cellspacing="2" border="0"><tr bgcolor="#000000">
+  <td background="$url_base/files/images/site/back.gif">
+   &nbsp; 
+   <a href="$url_base/feedback/comments.pl?todo=leave|for=$for">Leave Comment</a>
+   &nbsp;
+  </td>
+  <td background="$url_base/files/images/site/back.gif">
+   &nbsp;
+   <a href="$url_base/feedback/comments.pl?todo=view|for=$for">View Comments</a>
+   &nbsp;
+  </td>
+ </tr></table>
+</td></tr></table>
+
+</p>
+
+EOT
+
+  print_text( $text, 6 );
+
+}
+
+##################################################
+##
+##  print_redirect( url )
+##
+##################################################
+
+sub print_redirect {
+
+  my ( $url ) = @_;
+
+  my $text = <<EOT;
+
+<p>
+The resource you requested has been moved, you are being redirected. If this
+does not work please click <a href=\"$url\">here</a> to move to the resources
+new location.
+</p>
+
+<meta http-equiv="Refresh" content="0; url=$url">
+<script language="javascript" type="text/javascript">
+top.location.href = '$url';
+</script>
+
+EOT
+
+  print_box( 'Resource Moved', $text );
+
+}
+
+##################################################
+##
+##  include_js(ra_jscripts)
+##
+##################################################
+
+sub include_js {
+
+  my ($ra_jscripts) = @_;
+
+  foreach my $script (@$ra_jscripts) {
+    print <<EOT;
+<script language="javascript" type="text/javascript" src="$url_base/files/jscript/$script.js"></script>
+EOT
+  }
+
+}
+
+##################################################
+##
+##  get_stylesheet() : scalar
+##
+##################################################
+
+sub get_stylesheet {
+
+  if (get_browser_name() eq "op") {
+    return "ie.css";
+  } else {
+    return get_browser_name() . ".css";
+  }
+
+}
+
+##################################################
+##
+##  get_browser_name() : scalar
+##
+##################################################
+
+sub get_browser_name {
+
+  if ($ENV{'HTTP_USER_AGENT'} =~ /Opera/) { return "op"; }
+  elsif ($ENV{'HTTP_USER_AGENT'} =~ /MSIE/) { return "ie"; }
+  elsif ($ENV{'HTTP_USER_AGENT'} =~ /Netscape/) { return "nn"; }
+  else { return "default"; }
+
+}
+
+##################################################
+##
+##  get_url_base() : scalar
+##
+##################################################
+
+sub get_url_base {
+
+  if (BASE =~ /^d/i) { return "//localhost/sites/radlohead"; }
+    else { return "//www.radlohead.com"; }
+
+}
+
+##################################################
+
+1;
+
+##################################################

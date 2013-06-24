@@ -1,0 +1,5 @@
+<%
+
+  varForumTitle = "Forum"
+
+%>

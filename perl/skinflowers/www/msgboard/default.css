@@ -1,0 +1,25 @@
+P, B, A, H1, CENTER, TD {
+  font-family: Arial, Helvetica;
+  font-size: 9pt;
+  color: #FFFFFF
+}
+BODY {  font-family: Arial, Helvetica; font-size: 9pt; color: #FFFFFF; text-decoration: none; background-color: #000000; } 
+li           { color: #CCCCFF }
+H1 {
+  font-weight: bold
+}
+
+A:link {color: #FFFFFF; text-decoration: none}
+A:visited {color: #FFFFFF; text-decoration: none}
+A:hover {color: #CCCCFF; text-decoration: underline}
+
+/*
+  gary, i added this lil bit, thought ya might like it...
+  take it out if it sucks.
+  it'll only work in IE too.  cause netskank sux.  obviously.
+*/
+INPUT, SELECT, TEXTAREA {
+  border: 1px #ffffff solid;
+  background-color: #000000;
+  color: #ffffff;
+}

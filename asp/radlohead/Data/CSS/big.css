@@ -1,0 +1,44 @@
+/* default.css */
+
+BODY {
+
+  background-color: #999999;
+
+}
+
+BODY, TD, P {
+
+  font-family: arial;
+  font-size: 10pt;
+  color: #222244;
+
+}
+
+A {
+
+  color: #222244;
+  text-decoration: none;
+
+}
+
+.slashdivide {
+
+  font-weight: bold;
+  font-size: 12pt;
+
+}
+
+.heading {
+
+  font-size: 15pt;
+  font-weight: bold;
+  color: #000000;
+
+}
+
+.smallheading {
+
+  font-weight: bold;
+  color: #000000;
+
+}

@@ -1,0 +1,5 @@
+<%
+
+  adminPassword = "radlo"
+
+%>

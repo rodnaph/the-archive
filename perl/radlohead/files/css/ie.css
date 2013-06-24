@@ -1,0 +1,63 @@
+/**************************************************
+         internet explorer stylesheet
+**************************************************/
+
+BODY {
+
+  scrollbar-face-color: #F00;
+  scrollbar-arrow-color: #FFF;
+  scrollbar-base-color: #000;
+  scrollbar-track-color: #000;
+
+}
+
+.smallMenuItem {
+  // nn only
+}
+
+A:hover {
+
+  text-decoration: underline;
+  color:#FFF;
+
+}
+
+A.profile_link:hover {
+
+  text-decoration: none;
+
+}
+
+A.menuItem:hover {
+  color: #000;
+  text-decoration: none;
+}
+A.popupMenuItem:hover {
+
+  color: #F00;
+  text-decoration: none;
+
+}
+
+INPUT, TEXTAREA, SELECT {
+
+  border: 2px #F00 solid;
+  background-image: url(../images/site/back.gif);
+  color: #FFF;
+
+}
+
+SELECT {
+
+  background: #000;
+
+}
+
+TD.bordered {
+
+  border: 1px #FF0000 solid;
+  padding: 3px;
+
+}
+
+/*************************************************/

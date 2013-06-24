@@ -1,0 +1,88 @@
+<html>
+<head>
+<title></title>
+
+<script language="javascript" type="text/javascript">
+
+function setLoader( num ) {
+
+  status = num+ '% done...';
+
+  loader.width = num * 2;
+
+}
+
+function initLoader() {
+
+  loader.width = 0;
+  loader.backgroundColor = '#ff0000';
+
+}
+
+function clearLoader() {
+
+  loader.visibility = 'hidden';
+
+}
+
+// creating loader
+document.writeln( '<div id="loader">&nbsp;</div>' );
+
+var loader = document.getElementById( 'loader' ).style;
+
+loader.position = 'absolute';
+loader.visibility = 'hidden';
+loader.pixelLeft = 120;
+loader.pixelTop = 5;
+
+</script>
+
+<style type="text/css">
+
+BODY, TD {
+
+  font-family: arial;
+  font-size: 8pt;
+
+}
+
+B.NavTitle {
+
+  font-size: 12pt;
+
+}
+
+A.NavControl {
+
+  font-size: 10pt;
+  color: #000000;
+  text-decoration: none;
+
+}
+
+</style>
+
+</head>
+
+<body topmargin="3" leftmargin="8" rightmargin="8" marginheight="0" marginwidth="0" bgcolor="#ffffff">
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+ <tr>
+  <td>
+
+    <b class="NavTitle">TileSheet</b>
+
+  </td>
+  <td align="right">
+
+    [
+     <a href="javascript:parent.close()" class="NavControl">close window</a> |
+     <a href="javascript:parent.location.reload()" class="NavControl">re-draw</a>
+    ]
+
+  </td>
+ </tr>
+</table>
+
+</body>
+</html>

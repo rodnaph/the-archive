@@ -1,0 +1,116 @@
+###############################################################################################
+###############################################################################################
+##
+##  quickchat.lib
+##
+###############################################################################################
+###############################################################################################
+
+use strict;
+
+use constant CHAT_FILE => BASE . 'files/quickchat';
+
+use FileHandle qw( getline );
+
+###############################################################################################
+##
+##  get_chat_file()
+##
+###############################################################################################
+
+sub get_chat_file {
+
+  return CHAT_FILE;
+
+}
+
+###############################################################################################
+##
+##  get_chat_text()
+##
+###############################################################################################
+
+sub get_chat_text {
+
+  local $/ = undef();
+
+  my $fh = new FileHandle( CHAT_FILE ) || return;
+
+  return $fh->getline();
+
+}
+
+###############################################################################################
+##
+##  get_chat_box()
+##
+###############################################################################################
+
+sub get_chat_box {
+
+  my ( $launch_link ) = @_;
+
+  $launch_link = ($launch_link) ? '' : qq{ [ <a href="javascript:launchChat()">launch</a> ] &nbsp; };
+
+  my ($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,$atime,$mtime) = stat( CHAT_FILE );
+
+  my $date = gmtime( $mtime );
+
+  return qq{
+
+       <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr bgcolor="#ff0000"><td>
+
+<script language="javascript" type="text/javascript">
+
+var chatWin;
+
+function launchChat() {
+  chatWin = window.open( '/feedback/quickchat.pl', 'ChatWin', 'left=50,top=50,width=600,height=330,scrollbars=no,toolbars=no' );
+}
+
+</script>
+
+        <table width="100%" cellpadding="3" cellspacing="0" border="0"><tr><td>
+         <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+          <td> &nbsp;<b><font color="#ffffff">QuickChat</font></b></td>
+          <td align="right" style="font-size: 8pt;">$launch_link</td>
+         </tr></table>
+        </td></tr></table>
+
+        <table width="100%" cellpadding="0" cellspacing="1" border="0"><tr bgcolor="#000000">
+         <td background="/files/images/site/back.gif">
+         <br />
+         &nbsp; <i>LastMessage: $date</i>
+         <br /><br />
+
+         <!-- chat text --!>
+         @{[ get_chat_text() ]}
+
+         <br />
+
+         <!-- chat form --!>
+         <form method="post" action="/feedback/quickchat.pl">
+         <input type="hidden" name="todo" value="post" />
+         <table border="0"><tr>
+          <td> &nbsp; <b>name:</b> <input type="text" name="chat_name" size="20" maxlength="10" /></td>
+          <td><b>chat:</b> <input type="text" name="chat_line" size="20" maxlength="80" /></td>
+          <td>
+           <input type="submit" value="CHAT" />
+          </td>
+         </tr></table>
+         </form>
+
+         </td>
+        </tr></table>
+       </td></tr></table>
+
+  };
+
+}
+
+###############################################################################################
+
+1;
+
+###############################################################################################
+###############################################################################################
