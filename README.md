@@ -42,3 +42,7 @@ This was my University project.  It's a Java app for plugging beans together in 
 environment, so you can hook together functionality.  There are some docs I wrote for
 the course in there as well.
 
+## Msgboard
+
+Some kind of message board in PHP...  They were all the rage back in the day.
+

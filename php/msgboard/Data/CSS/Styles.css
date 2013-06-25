@@ -1,0 +1,114 @@
+/*  Styles.css  */
+
+BODY {
+	background-color: #eeeeee;
+	margin: 20px;
+}
+
+P, .PostTitle, .User, .NavLink, .UnregisteredUser, DIV, .FormTitle {
+	font-family: arial;
+	font-size: 0.8em;
+	color: #000000;
+}
+
+.NavLink, .SmallTitle, .FormTitle {
+	text-decoration: none;
+	color: #444466;
+}
+
+.FormTitle, .SmallTitle {
+	font-weight: bold;
+}
+
+.SmallTitle {
+	font-size: 0.9em;
+}
+
+.PostTitle {
+	color: #6666ff;
+}
+
+.PostTitle:hover {
+	text-decoration: none;
+}
+
+.FormTitle {
+	font-size: 0.8em;
+}
+
+.NavLink:hover {
+	text-decoration: none;
+	color: #cc3333;
+}
+
+.User, .UnregisteredUser {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.UnregisteredUser {
+	color: #777799;
+}
+
+#PostBody {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+}
+
+#MainTitle {
+	font-size: 22pt;
+	font-weight: bold;
+}
+
+.FormControl {
+	border: 1px #000000 solid;
+	background-color: #ffffff;
+	font-size: 12pt;
+}
+
+#UserSecondCol {
+	position: absolute;
+	top: 10px;
+	left: 50%;
+}
+
+#UserListWrap {
+	position: absolute;
+	width: 95%;
+	margin-top: 10px;
+}
+
+#UserList {
+	background-color: #ffffff;
+	padding: 10px;
+	border: 1px #000000 dashed;
+}
+
+.PostCount {
+}
+
+#PostAmended {
+	font-style: italic;
+}
+
+.Amendment {
+	font-size: 12pt;
+	padding: 2px;
+}
+
+#PostTitleBig {
+	font-style: italic;
+}
+
+.Info {
+	padding: 2px;
+}
+
+UL {
+	margin: 1px;
+}
+
+LI {
+	list-style-image: url(../Images/reply.gif);
+}
